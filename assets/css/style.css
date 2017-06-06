@@ -1,0 +1,103 @@
+.woocommerce nav.woocommerce-pagination, .woocommerce-page nav.woocommerce-pagination, .woocommerce #content nav.woocommerce-pagination, .woocommerce-page #content nav.woocommerce-pagination {
+	text-align:center;
+	margin-bottom:1.5em;
+}
+.woocommerce nav.woocommerce-pagination ul, .woocommerce-page nav.woocommerce-pagination ul, .woocommerce #content nav.woocommerce-pagination ul, .woocommerce-page #content nav.woocommerce-pagination ul {
+	display:inline-block;
+	white-space:nowrap;
+	padding:0;
+	clear:both;
+	border:1px solid #e0dadf;
+	border-right:0;
+	margin:1px
+}
+.woocommerce nav.woocommerce-pagination ul li, .woocommerce-page nav.woocommerce-pagination ul li, .woocommerce #content nav.woocommerce-pagination ul li, .woocommerce-page #content nav.woocommerce-pagination ul li {
+	border-right:1px solid #e0dadf;
+	padding:0;
+	margin:0;
+	float:left;
+	display:inline;
+	overflow:hidden
+}
+.woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span, .woocommerce-page nav.woocommerce-pagination ul li span, .woocommerce #content nav.woocommerce-pagination ul li span, .woocommerce-page #content nav.woocommerce-pagination ul li span {
+	margin:0;
+	text-decoration:none;
+	padding:0;
+	line-height:1em;
+	font-size:1em;
+	font-weight:normal;
+	padding:.5em;
+	min-width:1em;
+	display:block
+}
+.woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus {
+	background:#f7f6f7;
+	color:#998896
+}
+
+nav.woo-pagination a:link, nav.woo-pagination a:visited, nav.woo-pagination a:active{
+	background:#FFFFFF !important;
+	border:none !important;
+}
+
+.woocommerce-result-count {
+	display:none;
+}
+.psad_more_product_disable {
+	width:100000px;
+	height:100000px;
+	position:absolute;
+	max-width:100%;
+	max-height:100%;
+	left:0;
+	top:0;
+	z-index:1000000;
+	display:none;
+}
+.pbc_container {
+	margin-top:1.5em;
+}
+.pbc_title {
+	margin-bottom:0.5em;
+}
+.wc_content .woocommerce-pagination, .pbc_content .woocommerce-pagination {
+	display:block;
+}
+.wc_content, .pbc_content, .products_categories_row {
+	position:relative;
+}
+.pbc_content #infscr-loading,
+.pbc_content .infscr-loading,
+.wc_content #infscr-loading,
+.wc_content .infscr-loading {background:none repeat scroll 0 0 #000;bottom:0!important;color:#fff;left:32%!important;margin:0;opacity:.8;padding:2% 1%;position:absolute;text-align:center;width:30%;min-width:200px;font-size:12px!important;font-family:"Open Sans",sans-serif!important;line-height:1!important;border-radius:5px;}
+.pbc_content #infscr-loading img,.wc_content #infscr-loading img{width:auto!important;}
+@media only screen and (max-width:480px){
+.pbc_content #infscr-loading,.wc_content #infscr-loading{left:0!important;width:100%!important;}
+}
+
+.click_more_button{
+	white-space: nowrap;
+	text-decoration:none !important;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	display: inline-block;
+	padding: 4px 14px 4px;
+	color: #fff;
+	text-decoration: none;
+	border:none;
+	position: relative;
+	cursor: pointer;
+	padding: 4px 14px 4px;
+	border: 1px solid #4e7aa6;
+	background: #ffffff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7497b9), to(#4b6e90));
+	background: -webkit-linear-gradient(#7497b9, #4b6e90);
+	background: -moz-linear-gradient(center top, #7497b9 0%, #4b6e90 100%);
+	background: -moz-gradient(center top, #7497b9 0%, #4b6e90 100%);
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}

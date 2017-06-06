@@ -1,0 +1,939 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Product Sort and Display\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-28 17:48+0700\n"
+"PO-Revision-Date: 2016-10-28 17:48+0700\n"
+"Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
+"Language-Team: a3rev\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/admin-interface.php:178
+msgid "Great! You have the latest version installed."
+msgstr ""
+
+#: admin/admin-interface.php:243
+msgid "Settings successfully saved."
+msgstr ""
+
+#: admin/admin-interface.php:251
+msgid "Error: Settings can not save."
+msgstr ""
+
+#: admin/admin-interface.php:259
+msgid "Settings successfully reseted."
+msgstr ""
+
+#: admin/admin-interface.php:280
+msgid "Thin"
+msgstr ""
+
+#: admin/admin-interface.php:281
+msgid "Thin/Italic"
+msgstr ""
+
+#: admin/admin-interface.php:282
+msgid "Normal"
+msgstr ""
+
+#: admin/admin-interface.php:283
+msgid "Italic"
+msgstr ""
+
+#: admin/admin-interface.php:284
+msgid "Bold"
+msgstr ""
+
+#: admin/admin-interface.php:285
+msgid "Bold/Italic"
+msgstr ""
+
+#: admin/admin-interface.php:295
+msgid "Solid"
+msgstr ""
+
+#: admin/admin-interface.php:296
+msgid "Double"
+msgstr ""
+
+#: admin/admin-interface.php:297
+msgid "Dashed"
+msgstr ""
+
+#: admin/admin-interface.php:298
+msgid "Dotted"
+msgstr ""
+
+#: admin/admin-interface.php:299
+msgid "Groove"
+msgstr ""
+
+#: admin/admin-interface.php:300
+msgid "Ridge"
+msgstr ""
+
+#: admin/admin-interface.php:301
+msgid "Inset"
+msgstr ""
+
+#: admin/admin-interface.php:302
+msgid "Outset"
+msgstr ""
+
+#: admin/admin-interface.php:1626 admin/admin-interface.php:1870
+#: admin/admin-interface.php:1970 admin/admin-interface.php:2139
+#: admin/admin-interface.php:2229 admin/admin-interface.php:2258
+#: admin/settings/endless-scroll-settings.php:198
+#: admin/settings/global-settings.php:246
+#: admin/settings/global-settings.php:298
+#: admin/settings/global-settings.php:315
+#: admin/settings/global-settings.php:336
+#: admin/settings/global-settings.php:354
+#: admin/settings/global-settings.php:394
+#: admin/settings/global-settings.php:414
+#: admin/settings/view-all-count-meta-settings.php:199
+#: admin/settings/view-all-count-meta-settings.php:205
+msgid "ON"
+msgstr ""
+
+#: admin/admin-interface.php:1627 admin/admin-interface.php:1871
+#: admin/admin-interface.php:1971 admin/admin-interface.php:2140
+#: admin/admin-interface.php:2230 admin/admin-interface.php:2259
+#: admin/settings/endless-scroll-settings.php:199
+#: admin/settings/global-settings.php:247
+#: admin/settings/global-settings.php:299
+#: admin/settings/global-settings.php:316
+#: admin/settings/global-settings.php:337
+#: admin/settings/global-settings.php:355
+#: admin/settings/global-settings.php:395
+#: admin/settings/global-settings.php:415
+#: admin/settings/view-all-count-meta-settings.php:200
+#: admin/settings/view-all-count-meta-settings.php:206
+msgid "OFF"
+msgstr ""
+
+#: admin/admin-interface.php:1632
+msgid "Google Fonts API"
+msgstr ""
+
+#: admin/admin-interface.php:1644
+msgid ""
+"ON to connect to Google Fonts API and have auto font updates direct from "
+"Google."
+msgstr ""
+
+#: admin/admin-interface.php:1648
+#, php-format
+msgid ""
+"Enter your existing Google Fonts API Key below. Don't have a key? Visit <a "
+"href='%s' target='_blank'>Google Developer API</a> to create a key"
+msgstr ""
+
+#: admin/admin-interface.php:1665
+msgid "Google Fonts API Key"
+msgstr ""
+
+#: admin/admin-interface.php:1668
+msgid "Your Google API Key is valid and automatic font updates are enabled."
+msgstr ""
+
+#: admin/admin-interface.php:1669
+msgid "Please enter a valid Google API Key."
+msgstr ""
+
+#: admin/admin-interface.php:1688
+msgid "Check New Version"
+msgstr ""
+
+#: admin/admin-interface.php:1699
+msgid "Check Now"
+msgstr ""
+
+#: admin/admin-interface.php:1876
+msgid "Open Box Display"
+msgstr ""
+
+#: admin/admin-interface.php:1889
+msgid ""
+"ON and each admin panel setting box OPEN | CLOSED position are saved each "
+"time changes are SAVED."
+msgstr ""
+
+#: admin/admin-interface.php:2294
+msgid "Width"
+msgstr ""
+
+#: admin/admin-interface.php:2296
+msgid "Height"
+msgstr ""
+
+#: admin/admin-interface.php:2298
+msgid "Hard Crop"
+msgstr ""
+
+#: admin/admin-interface.php:2391
+msgid "-- Default Fonts --"
+msgstr ""
+
+#: admin/admin-interface.php:2402
+msgid "-- Google Fonts --"
+msgstr ""
+
+#: admin/admin-interface.php:2443
+msgid "Preview your customized typography settings"
+msgstr ""
+
+#: admin/admin-interface.php:2552 admin/admin-interface.php:2786
+msgid "Preview your customized border settings"
+msgstr ""
+
+#: admin/admin-interface.php:2553 admin/admin-interface.php:2720
+msgid "0px = No Border"
+msgstr ""
+
+#: admin/admin-interface.php:2561 admin/admin-interface.php:2777
+msgid "Rounded"
+msgstr ""
+
+#: admin/admin-interface.php:2562 admin/admin-interface.php:2778
+msgid "Square"
+msgstr ""
+
+#: admin/admin-interface.php:2572 admin/admin-interface.php:2791
+msgid "Top Left Corner"
+msgstr ""
+
+#: admin/admin-interface.php:2592 admin/admin-interface.php:2811
+msgid "Top Right Corner"
+msgstr ""
+
+#: admin/admin-interface.php:2612 admin/admin-interface.php:2831
+msgid "Bottom Right Corner"
+msgstr ""
+
+#: admin/admin-interface.php:2632 admin/admin-interface.php:2851
+msgid "Bottom Left Corner"
+msgstr ""
+
+#: admin/admin-interface.php:2719
+msgid "Preview your customized border styles settings"
+msgstr ""
+
+#: admin/admin-interface.php:2901
+msgid "YES"
+msgstr ""
+
+#: admin/admin-interface.php:2902
+msgid "NO"
+msgstr ""
+
+#: admin/admin-interface.php:2916
+msgid "Horizontal Shadow"
+msgstr ""
+
+#: admin/admin-interface.php:2934
+msgid "Vertical Shadow"
+msgstr ""
+
+#: admin/admin-interface.php:2952
+msgid "Blur Distance"
+msgstr ""
+
+#: admin/admin-interface.php:2970
+msgid "Spread Size"
+msgstr ""
+
+#: admin/admin-interface.php:2988
+msgid "INNER"
+msgstr ""
+
+#: admin/admin-interface.php:2989
+msgid "OUTER"
+msgstr ""
+
+#: admin/admin-interface.php:3007
+msgid "Preview your customized box shadow settings"
+msgstr ""
+
+#: admin/admin-interface.php:3275
+msgid "Save changes"
+msgstr ""
+
+#: admin/admin-interface.php:3276
+msgid "Reset Settings"
+msgstr ""
+
+#: admin/admin-pages/admin-sort-display-page.php:63
+#: admin/admin-pages/admin-sort-display-page.php:64
+msgid "Sort & Display"
+msgstr ""
+
+#: admin/admin-ui.php:109 admin/admin-ui.php:112
+msgid "Premium Version Enhanced Features"
+msgstr ""
+
+#: admin/admin-ui.php:113
+msgid "WooCommerce Dynamic Gallery Premium"
+msgstr ""
+
+#: admin/admin-ui.php:114
+msgid ""
+"Quick Video showing the main (not all) enhanced features that are built into "
+"the WooCommerce Dynamic Gallery Premium version"
+msgstr ""
+
+#: admin/admin-ui.php:115
+msgid "Developer Support and Premium Features"
+msgstr ""
+
+#: admin/admin-ui.php:116
+msgid ""
+"Limited Time Offer. Purchase the Premium Version Lifetime License. That is a "
+"Lifetime of maintenance updates, feature upgrades and developer support for "
+"a once only fee. Offer ending soon."
+msgstr ""
+
+#: admin/admin-ui.php:117
+msgid "Get Premium Features and Support"
+msgstr ""
+
+#: admin/admin-ui.php:265
+#, php-format
+msgid ""
+"Advanced Settings - Upgrade to the <a href=\"%s\" target=\"_blank\">%s "
+"License</a> to activate these settings."
+msgstr ""
+
+#: admin/admin-ui.php:268
+msgid "Pro Version"
+msgstr ""
+
+#: admin/admin-ui.php:318 admin/admin-ui.php:337
+msgid "You should check now to see if have any new version is available"
+msgstr ""
+
+#: admin/admin-ui.php:320
+#, php-format
+msgid ""
+"Connection Failure! Please try again. If this issue persists please create a "
+"support request on the plugin <a href=\"%s\" target=\"_blank\">a3rev support "
+"forum</a>."
+msgstr ""
+
+#: admin/admin-ui.php:328
+#, php-format
+msgid ""
+"There is a new version <span class=\"a3rev-ui-new-plugin-version\">%s</span> "
+"available, <a href=\"%s\" target=\"_blank\">update now</a> or download "
+"direct from <a href=\"%s\" target=\"_blank\">My Account</a> on a3rev.com"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:101
+msgid "Upload"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:121
+msgid "View File"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:81
+msgid "Endless Scroll Settings successfully saved."
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:82
+msgid "Error: Endless Scroll Settings can not save."
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:83
+msgid "Endless Scroll Settings successfully reseted."
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:139
+#: admin/settings/endless-scroll-settings.php:190
+#: admin/tabs/endless-scroll-tab.php:78
+msgid "Endless Scroll"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:184
+msgid "Shop Page Scroll"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:191
+msgid ""
+"On to activate the Endless Scroll feature for Category groups on Shop page."
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:208
+msgid "Scroll Type"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:215
+msgid "Click More..."
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:216
+msgid "Auto Scroll"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:222
+msgid "Shop Page Categories Endless Scroll on Click style"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:229
+#: admin/settings/view-all-count-meta-settings.php:219
+msgid "Button or Hyperlink Text"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:236
+#: admin/settings/view-all-count-meta-settings.php:226
+msgid "Linked"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:237
+#: admin/settings/view-all-count-meta-settings.php:227
+msgid "Button"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:242
+#: admin/settings/view-all-count-meta-settings.php:232
+msgid "Button Styling"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:247
+#: admin/settings/view-all-count-meta-settings.php:237
+msgid "Button Text"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:248
+#: admin/settings/endless-scroll-settings.php:340
+msgid "Text for Endless Scroll on shop page"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:251
+#: admin/settings/endless-scroll-settings.php:343
+#: classes/class-wc-psad.php:636
+msgid "Click More Categories"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:255
+#: admin/settings/view-all-count-meta-settings.php:249
+msgid "Button Align"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:261
+#: admin/settings/endless-scroll-settings.php:353
+#: admin/settings/view-all-count-meta-settings.php:255
+#: admin/settings/view-all-count-meta-settings.php:356
+msgid "Center"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:262
+#: admin/settings/endless-scroll-settings.php:354
+#: admin/settings/view-all-count-meta-settings.php:256
+#: admin/settings/view-all-count-meta-settings.php:357
+msgid "Left"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:263
+#: admin/settings/endless-scroll-settings.php:355
+#: admin/settings/view-all-count-meta-settings.php:257
+#: admin/settings/view-all-count-meta-settings.php:358
+msgid "Right"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:268
+#: admin/settings/view-all-count-meta-settings.php:266
+msgid "Button Padding"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:269
+#: admin/settings/view-all-count-meta-settings.php:267
+msgid "Padding from Button text to Button border"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:274
+#: admin/settings/view-all-count-meta-settings.php:272
+msgid "Top/Bottom"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:280
+#: admin/settings/view-all-count-meta-settings.php:278
+msgid "Left/Right"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:288
+#: admin/settings/view-all-count-meta-settings.php:286
+msgid "Background Colour"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:289
+#: admin/settings/endless-scroll-settings.php:297
+#: admin/settings/endless-scroll-settings.php:305
+#: admin/settings/endless-scroll-settings.php:368
+#: admin/settings/view-all-count-meta-settings.php:287
+#: admin/settings/view-all-count-meta-settings.php:295
+#: admin/settings/view-all-count-meta-settings.php:303
+#: admin/settings/view-all-count-meta-settings.php:375
+msgid "Default [default_value]"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:296
+#: admin/settings/view-all-count-meta-settings.php:294
+msgid "Background Colour Gradient From"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:304
+#: admin/settings/view-all-count-meta-settings.php:302
+msgid "Background Colour Gradient To"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:312
+#: admin/settings/view-all-count-meta-settings.php:311
+msgid "Button Border"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:319
+#: admin/settings/view-all-count-meta-settings.php:318
+msgid "Button Font"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:326
+#: admin/settings/view-all-count-meta-settings.php:325
+msgid "Button Shadow"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:334
+#: admin/settings/view-all-count-meta-settings.php:333
+msgid "Linked Text Styling"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:339
+#: admin/settings/view-all-count-meta-settings.php:338
+msgid "Linked Text"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:347
+#: admin/settings/view-all-count-meta-settings.php:350
+msgid "Linked Text Align"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:360
+#: admin/settings/view-all-count-meta-settings.php:367
+msgid "Hyperlink Font"
+msgstr ""
+
+#: admin/settings/endless-scroll-settings.php:367
+#: admin/settings/view-all-count-meta-settings.php:374
+msgid "Hyperlink Hover Colour"
+msgstr ""
+
+#: admin/settings/global-settings.php:81
+msgid "Global Settings successfully saved."
+msgstr ""
+
+#: admin/settings/global-settings.php:82
+msgid "Error: Global Settings can not save."
+msgstr ""
+
+#: admin/settings/global-settings.php:83
+msgid "Global Settings successfully reseted."
+msgstr ""
+
+#: admin/settings/global-settings.php:156
+#: admin/tabs/global-settings-tab.php:78
+#: classes/class-wc-psad-admin-hook.php:272
+msgid "Settings"
+msgstr ""
+
+#: admin/settings/global-settings.php:196 classes/class-wc-psad.php:63
+msgid "Default sorting (custom ordering + name)"
+msgstr ""
+
+#: admin/settings/global-settings.php:197 classes/class-wc-psad.php:64
+msgid "Popularity (sales)"
+msgstr ""
+
+#: admin/settings/global-settings.php:198 classes/class-wc-psad.php:65
+msgid "Average Rating"
+msgstr ""
+
+#: admin/settings/global-settings.php:199 classes/class-wc-psad.php:66
+msgid "Sort by most recent"
+msgstr ""
+
+#: admin/settings/global-settings.php:200 classes/class-wc-psad.php:67
+msgid "Sort by price (asc)"
+msgstr ""
+
+#: admin/settings/global-settings.php:201 classes/class-wc-psad.php:68
+msgid "Sort by price (desc)"
+msgstr ""
+
+#: admin/settings/global-settings.php:202
+#: classes/class-wc-psad-admin-hook.php:127
+#: classes/class-wc-psad-functions.php:72 classes/class-wc-psad.php:69
+msgid "Sort by On Sale: Show first"
+msgstr ""
+
+#: admin/settings/global-settings.php:203
+#: classes/class-wc-psad-admin-hook.php:128
+#: classes/class-wc-psad-functions.php:73 classes/class-wc-psad.php:70
+msgid "Sort by Featured: Show first"
+msgstr ""
+
+#: admin/settings/global-settings.php:210
+msgid "Plugin Framework Global Settings"
+msgstr ""
+
+#: admin/settings/global-settings.php:217
+msgid "Customize Admin Setting Box Display"
+msgstr ""
+
+#: admin/settings/global-settings.php:218
+msgid ""
+"By default each admin panel will open with all Setting Boxes in the CLOSED "
+"position."
+msgstr ""
+
+#: admin/settings/global-settings.php:225
+msgid "Google Fonts"
+msgstr ""
+
+#: admin/settings/global-settings.php:226
+msgid ""
+"By Default Google Fonts are pulled from a static JSON file in this plugin. "
+"This file is updated but does not have the latest font releases from Google."
+msgstr ""
+
+#: admin/settings/global-settings.php:233
+msgid "House Keeping"
+msgstr ""
+
+#: admin/settings/global-settings.php:237
+msgid "Clean up on Deletion"
+msgstr ""
+
+#: admin/settings/global-settings.php:238
+msgid ""
+"On deletion (not deactivate) the plugin will completely remove all tables "
+"and data it created, leaving no trace it was ever here."
+msgstr ""
+
+#: admin/settings/global-settings.php:250
+msgid "WooCommerce Sort & Display Premium"
+msgstr ""
+
+#: admin/settings/global-settings.php:254
+msgid "Advanced Features"
+msgstr ""
+
+#: admin/settings/global-settings.php:256
+msgid ""
+"The Premium version of this plugin is for those who want Sort and Display "
+"applied to their stores Product Category and Product Tag pages. It has ALL "
+"the features of this Free version - Apply Sort and Display to the shop page "
+"- plus these advanced features:"
+msgstr ""
+
+#: admin/settings/global-settings.php:258
+msgid ""
+"Apply Sort and display to the entire store - Product Category and Product "
+"Tags pages."
+msgstr ""
+
+#: admin/settings/global-settings.php:259
+msgid "Show Sub Categories with products on their Parent Category page."
+msgstr ""
+
+#: admin/settings/global-settings.php:260
+msgid "Set the number of products to show in parent and each child category."
+msgstr ""
+
+#: admin/settings/global-settings.php:261
+msgid "Set Parent Cat to show no products - just show Child cats and products."
+msgstr ""
+
+#: admin/settings/global-settings.php:262
+msgid ""
+"If parent Category has no products because all products are in the child "
+"categories set to show child cats with products."
+msgstr ""
+
+#: admin/settings/global-settings.php:263
+msgid ""
+"Custom Sort Featured and On Sale is added to WooCommerce Sort features for "
+"Category and Tags pages."
+msgstr ""
+
+#: admin/settings/global-settings.php:264
+msgid "Endless Scroll feature for Product Category and Product tag pages."
+msgstr ""
+
+#: admin/settings/global-settings.php:265
+msgid ""
+"Apply all settings globally from the admin dashboard with individual setting "
+"on each category e.g. Sort type, number of products to show."
+msgstr ""
+
+#: admin/settings/global-settings.php:267
+#, php-format
+msgid ""
+"The Premium version is a once only payment Lifetime License plugin (not "
+"annual subscription). View details here on the <a href=\"%s\" target=\"_blank"
+"\">a3rev.com</a> site"
+msgstr ""
+
+#: admin/settings/global-settings.php:276
+msgid "SHOW"
+msgstr ""
+
+#: admin/settings/global-settings.php:277
+msgid "HIDE"
+msgstr ""
+
+#: admin/settings/global-settings.php:281
+msgid "DB Query Cache"
+msgstr ""
+
+#: admin/settings/global-settings.php:282
+msgid ""
+"Caching applies to product categories and products loading on shop page, "
+"(product category and product tags pages in Pro Version). Significantly "
+"reduces server resources used in fetching product categories and products. "
+"Highly Recommended for sites with more than 20 Product categories"
+msgstr ""
+
+#: admin/settings/global-settings.php:288
+msgid "Cache Queries"
+msgstr ""
+
+#: admin/settings/global-settings.php:289
+msgid "Cache is auto cleared every 24 hours"
+msgstr ""
+
+#: admin/settings/global-settings.php:307
+msgid "Manual Flush"
+msgstr ""
+
+#: admin/settings/global-settings.php:308
+msgid ""
+"Switch ON and save changes to manually clear Sort and Display Query caching"
+msgstr ""
+
+#: admin/settings/global-settings.php:320
+msgid "Shop Page Show Products by Category"
+msgstr ""
+
+#: admin/settings/global-settings.php:323
+#, php-format
+msgid ""
+"These settings when activated over ride the WooCommerce <a target='_blank' "
+"href='%s'>Product Options</a> shop page settings."
+msgstr ""
+
+#: admin/settings/global-settings.php:327
+#: classes/class-wc-psad-admin-hook.php:141
+#: classes/class-wc-psad-admin-hook.php:145
+msgid "Shop Page"
+msgstr ""
+
+#: admin/settings/global-settings.php:328
+#, php-format
+msgid ""
+"Sort and display products by category on Shop pages. Sort categories by drop "
+"and drag at <a target='_blank' href='%s'>Product Categories</a>."
+msgstr ""
+
+#: admin/settings/global-settings.php:346
+msgid "Empty Parent Categories"
+msgstr ""
+
+#: admin/settings/global-settings.php:347
+msgid ""
+"ON and when Parent Cat has no products assigned to it, products from Child "
+"Cats of that Parent will be displayed. If none found the Category is not "
+"displayed."
+msgstr ""
+
+#: admin/settings/global-settings.php:358
+msgid "Categories Per Page"
+msgstr ""
+
+#: admin/settings/global-settings.php:359
+msgid ""
+"Set the number of Category product groups to show per pagination or endless "
+"scroll event."
+msgstr ""
+
+#: admin/settings/global-settings.php:359
+#: admin/settings/global-settings.php:368
+msgid "Default is [default_value]."
+msgstr ""
+
+#: admin/settings/global-settings.php:367
+msgid "Products per Category"
+msgstr ""
+
+#: admin/settings/global-settings.php:368
+msgid ""
+"Set the number of products to show per Category on Shop pages. Can over ride "
+"on a category by category basis from each category edit page."
+msgstr ""
+
+#: admin/settings/global-settings.php:376
+msgid "Product Sort"
+msgstr ""
+
+#: admin/settings/global-settings.php:377
+msgid ""
+"Product type can be set on a Category by category basis with the Pro version"
+msgstr ""
+
+#: admin/settings/global-settings.php:386
+msgid "Product Count"
+msgstr ""
+
+#: admin/settings/global-settings.php:387
+msgid "ON to show product count under category title."
+msgstr ""
+
+#: admin/settings/global-settings.php:399
+msgid "Visual Content Separator"
+msgstr ""
+
+#: admin/settings/global-settings.php:405
+msgid "Visual Separator"
+msgstr ""
+
+#: admin/settings/global-settings.php:406
+msgid ""
+"On to show a separator between each category group of products on Shop Page."
+msgstr ""
+
+#: admin/settings/global-settings.php:424
+msgid "Separator Border"
+msgstr ""
+
+#: admin/settings/global-settings.php:431
+msgid "Separator Padding"
+msgstr ""
+
+#: admin/settings/global-settings.php:437
+msgid "Top"
+msgstr ""
+
+#: admin/settings/global-settings.php:443
+msgid "Bottom"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:81
+msgid "View All & Count Meta Settings successfully saved."
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:82
+msgid "Error: View All & Count Meta Settings can not save."
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:83
+msgid "View All & Count Meta Settings successfully reseted."
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:139
+#: admin/tabs/view-all-count-meta-tab.php:78
+msgid "View All & Count Meta"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:184
+msgid "View All Products Link Position"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:190
+msgid "Show at"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:198
+msgid "At top After Category product count meta"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:204
+msgid "At Bottom under category products"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:213
+msgid "View All Products Link Style"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:238
+#: admin/settings/view-all-count-meta-settings.php:339
+msgid "Text for link in each category"
+msgstr ""
+
+#: admin/settings/view-all-count-meta-settings.php:241
+#: admin/settings/view-all-count-meta-settings.php:342
+#: classes/class-wc-psad.php:383
+msgid "See more..."
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:225
+msgid "Go to Support Forum"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:231
+msgid "Is this plugin is just what you needed? If so"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:232
+msgid "Submit Review for Plugin on WordPress"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:239
+msgid "WooCommerce Product Sort and Display Pro"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:245
+msgid "Free WooCommerce Plugins"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:252
+msgid "Free WordPress Plugins"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:266
+msgid "Documentation"
+msgstr ""
+
+#: classes/class-wc-psad-admin-hook.php:267
+msgid "Support"
+msgstr ""
+
+#: classes/class-wc-psad.php:137
+msgid "No more categories to load."
+msgstr ""
+
+#: classes/class-wc-psad.php:138
+msgid "Loading the next set of Categories..."
+msgstr ""
+
+#: classes/class-wc-psad.php:535
+msgid "Showing"
+msgstr ""
+
+#: classes/class-wc-psad.php:535
+msgid "of"
+msgstr ""
+
+#: classes/class-wc-psad.php:535
+msgid "products in this Category"
+msgstr ""
+
+#: classes/class-wc-psad.php:567
+msgid "No more products to view in this category"
+msgstr ""
