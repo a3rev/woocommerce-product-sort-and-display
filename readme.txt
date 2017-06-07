@@ -2,21 +2,21 @@
 
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
-Requires at least: 4.1
-Tested up to: 4.7.4
-Stable tag: 1.7.6
+Requires at least: 4.5
+Tested up to: 4.8.0
+Stable tag: 1.8.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Create a true Supermarket shopping experience. Sort and show products on Shop page by category - auto show On Sale or Featured first, Endless Scroll.
 
-== Description ==
+== DESCRIPTION ==
 
 Walk into any shop, Supermarket or Department store and what do you see - products organized and grouped in aisle and areas. 'Walk' into any WooCommerce store page and what does your customer / client see - an almost entirely random display of products sorted mostly by date of publishing.
 
 That has always seemed crazy to us. What shop owner would just keep stacking new stock at the front of all the other stock in their shop in any order. None is the answer! So why is that exactly what all of our virtual WooCommerce stores do?
 
-We decided to build a plugin that would fix that. With WooCommerce Product Sort and Display installed you can:
+We decided to build a plugin that would fix that. With WooCommerce Product Sort and Display installed you can do the following:
 
 * Sort products to show by category on shop page.
 * Sort category order on shop page by drag and drop.
@@ -31,29 +31,23 @@ We decided to build a plugin that would fix that. With WooCommerce Product Sort 
 * Intelligent Navigation shows customers the total number of products in the category they are viewing with a link to view all.
 * Endless Scroll feature (option) for seamless customer scrolling through the entire shop page makes for quick and very easy shop browsing.
 
-
-= 2 Brand New Product Sort Features =
+= 2 NEW PRODUCT SORT FEATURES =
 
 * Auto show any 'On Sale' products first in the Category View on shop page.
 * Auto show any 'featured' products first in the category view.
 
-= Intelligent Browsing =
+= INTELLIGENT BROWSING =
 
 * Show the current number of products being viewed and total products in Category.
 * 'No more product to view' message when all products are showing.
 
-= Shop Page Product Category Group Visual Separator =
+= VISUAL SEPARATOR =
 
-* Enable/Disable a visual separator between each Product Category group of products.
-* WYSIWYG separator style editor.
+* Add a visual separator between each Product Category group of products.
+* Style the separator with in plugin style options - no coding
 * Set padding in px above and below the separator.
 
-
-= Live Shop Demo =
-
-Visit [Dixie Sourenirs](http://dixiesouvenirs.com/shop-here/) to see how the plugin allows you to set up your Shop page product display on a live store. Thanks to the site owner Colin Slark for permission to link to his shop page.
-
-= Premium Version =
+= PREMIUM VERSION =
 
 The Premium version of this plugin is for those who want Sort and Display applied to their stores Product Category and Product Tag pages. It has ALL the features of this Free version - Apply Sort and Display to the shop page - plus these advanced features:
 
@@ -66,29 +60,22 @@ The Premium version of this plugin is for those who want Sort and Display applie
 * Endless Scroll feature for Product Category and Product tag pages
 * Apply all settings globally from the admin dashboard with individual setting on each category e.g. Sort type, number of products to show
 
-The Premium version is a once only payment Lifetime License plugin (not annual subscription). View details here on the [a3rev.com](http://a3rev.com/shop/woocommerce-product-sort-and-display/) site
+View details here on the [a3rev.com](http://a3rev.com/shop/woocommerce-product-sort-and-display/) site
 
-= Localization =
+= CONTRIBUTE =
 
-* English (default) - always included.
-*.po file (woocommerce-product-sort-and-display.po) in languages folder for translations.
-* If you do a translation for your site please send it to us for inclusion in the plugin language folder. We'll acknowledge your work here. [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
+When you download WooCommerce Product Sort and Display, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of WooCommerce Product Sort and Display or any of our other plugins on Github head over to the WooCommerce Product Sort and Display[GitHub Repository](https://github.com/a3rev/woocommerce-product-sort-and-display) to find out how you can contribute.
 
-= Plugin Resources =
-
-[Premium Version](http://a3rev.com/shop/woocommerce-product-sort-and-display/) |
-[Documentation](http://docs.a3rev.com/user-guides/plugins-extensions/woocommerce/product-sort-and-display/) |
-[Lite Version Support](http://wordpress.org/support/plugin/woocommerce-product-sort-and-display/)
-
+Want to add a new language to WooCommerce Product Sort and Display! You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/woocommerce-product-sort-and-display)
 
 == Installation ==
 
 = Minimum Requirements =
 
-* WordPress 4.0
-* WooCommerce 2.1 and later.
-* PHP version 5.2.4 or greater
-* MySQL version 5.1 or greater
+* WordPress 4.5
+* WooCommerce 2.7 and later.
+* PHP version 5.5 or greater
+* MySQL version 5.5 or greater
 
 = Automatic installation =
 
@@ -114,15 +101,17 @@ The manual installation method involves downloading our plugin and uploading it 
 
 1. Install and activate the plugin
 
-2. On wp-admin click on WooCommerce > Sort & Display
+2. On WordPress Amin page go to WooCommerce menu > Sort & Display menu
 
 3. Settings Tab - Turn Endless Scroll on for your shop page.
 
 4. Endless Scroll - active on Shop Page.
 
-5. Go to Products > Categories and use drop and drag to sort the categories in the order you want them to display.
+5. Go to Products menu > Categories menu - drop and drag product categories in the order you want them to display on the shop page.
 
-6. Enjoy endlessly tweaking your stores product layout.
+6. Visual ON | OFF switch on each category. Switch OFF any product category that you do not want to show on the shop page 
+
+7. Enjoy endlessly tweaking your store page product layout.
 
 
 == Frequently Asked Questions ==
@@ -133,6 +122,13 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.0 - 2017/06/07 =
+* Feature - Launched WooCommerce Product Sort & Display public Repository
+* Tweak - Tested for compatibility with WordPress major version 4.8.0
+* Tweak - tested for compatibility with WooCommerce version 3.0.7
+* Tweak - Include bootstrap modal script into plugin framework
+* Tweak - Update a3rev plugin framework to latest version
 
 = 1.7.6 - 2017/04/22 =
 * Tweak - Tested for full compatibility with WooCommerce version 3.0.4
@@ -437,6 +433,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.0 =
+Feature Update. 2 code tweaks for compatibility with WordPress major version 4.8.0 and WooCommerce version 3.0.7 plus launch of public Github repo for source code
 
 = 1.7.6 =
 Maintenance Update. 7 code updates for compatibility with WooCommerce Version 3.0.4 backward to 2.6.0 and WordPress 4.7.4
