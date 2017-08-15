@@ -11,7 +11,7 @@ function wc_psad_install()
     global $wc_psad_admin_init;
 
     WC_PSAD_Functions::auto_create_order_keys_all_products();
-    update_option('wc_psad_lite_version', '1.8.0');
+    update_option('wc_psad_lite_version', '1.8.1');
     delete_metadata( 'user', 0, $wc_psad_admin_init->plugin_name . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
 
     // Remove house keeping option of another version
@@ -113,6 +113,6 @@ function psad_upgrade_plugin()
         WC_PSAD_Functions::flush_cached();
     }
 
-    update_option('wc_psad_lite_version', '1.8.0');
+    update_option('wc_psad_lite_version', '1.8.1');
 }
 ?>

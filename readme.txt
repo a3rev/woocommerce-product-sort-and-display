@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 4.8.0
-Stable tag: 1.8.0
+Tested up to: 4.8.1
+Stable tag: 1.8.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,11 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.1 - 2017/08/15 =
+* Tweak - Tested for compatibility with WordPress 4.8.1
+* Tweak - Tested for compatibility with WooCommerce 3.1.1
+* Fix - Change field name from ID to id so that the Product Categories ON | OFf button can show on the Product categories table
 
 = 1.8.0 - 2017/06/07 =
 * Feature - Launched WooCommerce Product Sort & Display public Repository
@@ -433,6 +438,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.1 =
+Maintenance Update. 1 bug fix plus compatibility with WooCommerce version 3.1.1 and WordPress version 4.8.1
 
 = 1.8.0 =
 Feature Update. 2 code tweaks for compatibility with WordPress major version 4.8.0 and WooCommerce version 3.0.7 plus launch of public Github repo for source code

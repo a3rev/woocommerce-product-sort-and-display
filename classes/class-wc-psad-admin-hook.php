@@ -151,7 +151,7 @@ class WC_PSAD_Settings_Hook
 	}
 
 	public function product_cat_column( $columns, $column, $id ) {
-		$term = get_term_by('ID', $id, 'product_cat');
+		$term = get_term_by('id', $id, 'product_cat');
 		if ( $column == 'psad_shop_page' ) {
 			if ( $term && $term->parent == 0 ) {
 				$checked = '';
