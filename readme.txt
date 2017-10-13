@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 4.8.1
-Stable tag: 1.8.1
+Tested up to: 4.8.2
+Stable tag: 1.8.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,11 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.2 - 2017/10/13 =
+* Tweak - Tested for compatibility with WooCommerce 3.2.0
+* Tweak - Tested for compatibility with WordPress 4.8.2
+* Tweak - Added support for the new WC 'tested up to' feature to show this plugin has been tested compatible with WC updates
 
 = 1.8.1 - 2017/08/15 =
 * Tweak - Tested for compatibility with WordPress 4.8.1
@@ -438,6 +443,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+Maintenance Upgrade. Tweaks for compatibility with WooCommerce 3.2.0 and WordPress 4.8.2
 
 = 1.8.1 =
 Maintenance Update. 1 bug fix plus compatibility with WooCommerce version 3.1.1 and WordPress version 4.8.1
