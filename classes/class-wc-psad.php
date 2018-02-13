@@ -198,12 +198,13 @@ class WC_PSAD
 	}
 
 	public function remove_ordering_dropdown() {
+
 		if ( is_post_type_archive( 'product' ) ) {
 			remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-
-			// remove for work compatibility on StoreFront Theme
-			remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
 		}
+
+		// remove for work compatibility on StoreFront Theme
+		remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
 	}
 
 	public function psad_wp_enqueue_script(){
@@ -555,7 +556,7 @@ class WC_PSAD
 					}
 					$term_link_sub_html = get_term_link( $category->slug, 'product_cat' );
 					echo '<div id="products_categories_row_'.$category->term_id.'" class="products_categories_row">';
-					echo '<div class="custom_box custom_box_archive responsi_title"><h1 class="title pbc_title">'.$term_link_html.'<a href="'.$term_link_sub_html.'">' .$category->name.'</a></h1>';
+					echo '<div class="custom_box custom_box_archive responsi_title"><h2 class="title pbc_title">'.$term_link_html.'<a href="'.$term_link_sub_html.'">' .$category->name.'</a></h2>';
 					if ( $enable_product_showing_count == 'yes' || ( $count_posts_get < $total_posts && $psad_es_category_item_bt_position == 'top' ) ) {
 						echo '<div class="product_categories_showing_count_container">';
 						if ( $enable_product_showing_count == 'yes' ) echo '<span class="product_categories_showing_count">'.__('Showing', 'woocommerce-product-sort-and-display' ). ' 1 - ' .$count_posts_get.' '.__('of', 'woocommerce-product-sort-and-display' ). ' '. $total_posts .' '. __('products in this Category', 'woocommerce-product-sort-and-display' ).'</span> ';

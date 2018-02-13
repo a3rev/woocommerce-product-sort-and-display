@@ -117,9 +117,9 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	/* Process when clean on deletion option is un selected */
 	/*-----------------------------------------------------------------------------------*/
 	public function after_save_settings() {
-		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( 'psad_lite_clean_on_deletion' ) == 0  )  {
+		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( $this->plugin_name . '_clean_on_deletion' ) == 0  )  {
 			$uninstallable_plugins = (array) get_option('uninstall_plugins');
-			unset($uninstallable_plugins[WC_PSAD_NAME]);
+			unset($uninstallable_plugins[ $this->plugin_path ]);
 			update_option('uninstall_plugins', $uninstallable_plugins);
 		}
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST['psad_flush_cached'] )  )  {
@@ -202,6 +202,13 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 			'onsale'     => __( 'Sort by On Sale: Show first', 'woocommerce-product-sort-and-display' ),
 			'featured'   => __( 'Sort by Featured: Show first', 'woocommerce-product-sort-and-display' ),
 		);
+
+		$wc_version = get_option( 'woocommerce_version', '1.0' );
+
+		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_images' );
+		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
+			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
+		}
 		
   		// Define settings			
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
@@ -236,7 +243,7 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 			array(
 				'name' 		=> __( 'Clean up on Deletion', 'woocommerce-product-sort-and-display' ),
 				'desc' 		=> __( 'On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here.', 'woocommerce-product-sort-and-display' ),
-				'id' 		=> 'psad_lite_clean_on_deletion',
+				'id' 		=> $this->plugin_name . '_clean_on_deletion',
 				'type' 		=> 'onoff_checkbox',
 				'default'	=> '0',
 				'separate_option'	=> true,
@@ -320,7 +327,7 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
             	'name' 		=> __( 'Shop Page Show Products by Category', 'woocommerce-product-sort-and-display' ),
             	'id'		=> 'psad_shop_page_box',
                 'type' 		=> 'heading',
-                'desc' 		=> sprintf( __("These settings when activated over ride the WooCommerce <a target='_blank' href='%s'>Product Options</a> shop page settings.", 'woocommerce-product-sort-and-display' ), admin_url( 'admin.php?page=wc-settings&tab=products&section=display', 'relative' ) ),
+                'desc' 		=> sprintf( __("These settings when activated over ride the WooCommerce <a target='_blank' href='%s'>Product Options</a> shop page settings.", 'woocommerce-product-sort-and-display' ), $wc_display_settings_url ),
                 'is_box'	=> true,
            	),
 			array(  

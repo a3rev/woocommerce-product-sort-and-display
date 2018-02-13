@@ -5,10 +5,10 @@ if (!defined('ABSPATH'))
 
 class WC_PSAD_Less
 {
-	public $plugin_name = 'wc_sort_display';
-	public $css_file_name = 'wc_sort_display';
-	public $plugin_folder = WC_PSAD_FOLDER;
-	public $plugin_dir = WC_PSAD_DIR;
+    public $plugin_name   = WC_PSAD_KEY;
+    public $css_file_name = 'wc_sort_display';
+    public $plugin_folder = WC_PSAD_FOLDER;
+    public $plugin_dir    = WC_PSAD_DIR;
 
     /*-----------------------------------------------------------------------------------*/
     /* Constructor */

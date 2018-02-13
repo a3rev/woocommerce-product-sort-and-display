@@ -30,18 +30,15 @@ class WC_PSAD_Admin_UI
 	 * @var string
 	 * You must change to correct plugin name that you are working
 	 */
-	public $plugin_name = 'wc_sort_display';
 
-	public $google_api_key_option = 'wc_psad_google_api_key';
-
-	public $toggle_box_open_option = 'wc_psad_toggle_box_open';
-
-	public $is_free_plugin = true;
-
-	public $version_transient = 'wc_psad_licinfo';
-
-	public $plugin_option_key = 'wc_psad_plugin';
-
+	public $framework_version      = '2.0.2';
+	public $plugin_name            = WC_PSAD_KEY;
+	public $plugin_path            = WC_PSAD_NAME;
+	public $google_api_key_option  = WC_PSAD_KEY . '_google_api_key';
+	public $toggle_box_open_option = WC_PSAD_KEY . '_toggle_box_open';
+	public $version_transient      = WC_PSAD_KEY . '_licinfo';
+	public $is_free_plugin         = true;
+	
 	public $support_url = 'https://a3rev.com/forums/forum/woocommerce-plugins/product-sort-and-display/';
 
 
@@ -55,7 +52,7 @@ class WC_PSAD_Admin_UI
 	 * @var string
 	 * You must change to correct pro plugin page url on a3rev site
 	 */
-	public $pro_plugin_page_url = 'http://a3rev.com/shop/woocommerce-product-sort-and-display/';
+	public $pro_plugin_page_url = 'https://a3rev.com/shop/woocommerce-product-sort-and-display/';
 	
 	/**
 	 * @var string
@@ -106,14 +103,14 @@ class WC_PSAD_Admin_UI
 	 */
 	public function get_premium_video_data() {
 		$premium_video_data = array(
-				'box_title'    => __( 'Premium Version Enhanced Features', 'wc_email_inquiry' ),
+				'box_title'    => __( 'Premium Version Enhanced Features', 'woocommerce-product-sort-and-display' ),
 				'image_url'    => WOO_DYNAMIC_GALLERY_IMAGES_URL. '/video.jpg',
 				'video_url'    => 'https://www.youtube.com/embed/9dGw-ORfMIk?version=3&autoplay=1',
-				'left_title'   => __( 'Premium Version Enhanced Features', 'wc_email_inquiry' ),
-				'left_text'    => __( 'WooCommerce Dynamic Gallery Premium', 'wc_email_inquiry' )
-									. "\n\n" . __( 'Quick Video showing the main (not all) enhanced features that are built into the WooCommerce Dynamic Gallery Premium version', 'wc_email_inquiry' ),
-				'right_title'  => __( 'Developer Support and Premium Features', 'wc_email_inquiry' ),
-				'right_text'   => __( 'Limited Time Offer. Purchase the Premium Version Lifetime License. That is a Lifetime of maintenance updates, feature upgrades and developer support for a once only fee. Offer ending soon.', 'wc_email_inquiry' )
+				'left_title'   => __( 'Premium Version Enhanced Features', 'woocommerce-product-sort-and-display' ),
+				'left_text'    => __( 'WooCommerce Dynamic Gallery Premium', 'woocommerce-product-sort-and-display' )
+									. "\n\n" . __( 'Quick Video showing the main (not all) enhanced features that are built into the WooCommerce Dynamic Gallery Premium version', 'woocommerce-product-sort-and-display' ),
+				'right_title'  => __( 'Developer Support and Premium Features', 'woocommerce-product-sort-and-display' ),
+				'right_text'   => __( 'Limited Time Offer. Purchase the Premium Version Lifetime License. That is a Lifetime of maintenance updates, feature upgrades and developer support for a once only fee. Offer ending soon.', 'woocommerce-product-sort-and-display' )
 									. "\n\n" . '<a target="_blank" href="'.$this->pro_plugin_page_url.'" class="button-primary">' . __( 'Get Premium Features and Support', '' ) . '</a>',
 			);
 
@@ -323,11 +320,11 @@ class WC_PSAD_Admin_UI
 				if ( FALSE !== stristr( $version_transient, '||' )
 					&& is_array( $version_info )
 					&& isset( $version_info[1] ) && $version_info[1] == 'valid'
-					&& version_compare( get_option('wc_psad_lite_version') , $version_info[0], '<' ) ) {
+					&& version_compare( WC_PSAD_VERSION , $version_info[0], '<' ) ) {
 
 						$version_message = sprintf( __( 'There is a new version <span class="a3rev-ui-new-plugin-version">%s</span> available, <a href="%s" target="_blank">update now</a> or download direct from <a href="%s" target="_blank">My Account</a> on a3rev.com', 'woocommerce-product-sort-and-display' ),
 							$version_info[0],
-							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . WC_PSAD_NAME ), 'upgrade-plugin_' . WC_PSAD_NAME ),
+							wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . $this->plugin_path ), 'upgrade-plugin_' . $this->plugin_path ),
 							'https://a3rev.com/my-account/downloads/'
 						);
 				}

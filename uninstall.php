@@ -5,21 +5,22 @@
  * Uninstalling deletes options, tables, and pages.
  *
  */
-if( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
+if( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) 
 	exit();
 
+$plugin_key = 'wc_psad';
+
 // Delete Google Font
-delete_option('wc_psad_google_api_key' . '_enable');
-delete_transient('wc_psad_google_api_key' . '_status');
-delete_option('wc_sort_display' . '_google_font_list');
+delete_option( $plugin_key . '_google_api_key' . '_enable' );
+delete_transient( $plugin_key . '_google_api_key' . '_status' );
+delete_option( $plugin_key . '_google_font_list' );
 
-if (get_option('psad_lite_clean_on_deletion') == 1) {
-    // Delete Google Font
-    delete_option('wc_psad_google_api_key');
-    delete_option('wc_psad_toggle_box_open');
-    delete_option('wc_sort_display' . '-custom-boxes');
+if ( get_option( $plugin_key . '_clean_on_deletion' ) == 1 ) {
+	delete_option( $plugin_key . '_google_api_key' );
+	delete_option( $plugin_key . '_toggle_box_open' );
+	delete_option( $plugin_key . '-custom-boxes' );
 
-    delete_metadata( 'user', 0, 'wc_sort_display' . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
+	delete_metadata( 'user', 0,  $plugin_key . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
 
     delete_option('psad_shop_page_enable');
     delete_option('psad_category_page_enable');
@@ -175,7 +176,7 @@ if (get_option('psad_lite_clean_on_deletion') == 1) {
     delete_post_meta_by_key('_psad_onsale_order');
     delete_post_meta_by_key('_psad_featured_order');
 
-    delete_option('psad_lite_clean_on_deletion');
+    delete_option( $plugin_key . '_clean_on_deletion');
 
 }
 

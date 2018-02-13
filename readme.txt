@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 4.9.0
-Stable tag: 1.8.2
+Tested up to: 4.9.4
+Stable tag: 1.8.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,17 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.3 - 2018/02/13 =
+* Maintenance Update. Under the bonnet tweaks to keep your plugin running smoothly and is the foundation for new features to be developed this year 
+* Framework - Update a3rev Plugin Framework to version 2.0.2
+* Framework - Add Framework version for all style and script files
+* Tweak - Update for full compatibility with a3rev Dashboard plugin
+* Tweak - Update WooCommerce Display Settings URL the new WooCommerce Customizer menu URL
+* Tweak  Change h1 tag for category names to h2 tags from theme. Using h1 tags not good for SEO
+* Fixed - Update frontend so that shop and category pages can show properly on WC 3.3.0
+* Tweak - Test for compatibility with WordPress 4.9.4
+* Tweak - Test for compatibility with WooCommerce 3.3.1
 
 = 1.8.2 - 2017/10/13 =
 * Tweak - Tested for compatibility with WooCommerce 3.2.0
@@ -443,6 +454,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.3 =
+Maintenance Update. This version updates the Plugin Framework to v 2.0.2, adds full compatibility with a3rev Dashboard, WordPress v 4.9.4 and WooCoomerce v 3.3.1
 
 = 1.8.2 =
 Maintenance Upgrade. Tweaks for compatibility with WooCommerce 3.2.0 and WordPress 4.8.2

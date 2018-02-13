@@ -2,8 +2,6 @@
 /**
  * Register Activation Hook
  */
-update_option('wc_psad_plugin', 'wc_psad');
-
 function wc_psad_install()
 {
     global $wpdb;
@@ -11,11 +9,11 @@ function wc_psad_install()
     global $wc_psad_admin_init;
 
     WC_PSAD_Functions::auto_create_order_keys_all_products();
-    update_option('wc_psad_lite_version', '1.8.2');
+    update_option('wc_psad_lite_version', WC_PSAD_VERSION );
     delete_metadata( 'user', 0, $wc_psad_admin_init->plugin_name . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
 
     // Remove house keeping option of another version
-    delete_option('psad_clean_on_deletion');
+    delete_option($wc_psad_admin_init->plugin_name . '_clean_on_deletion');
 
     update_option('wc_psad_just_installed', true);
 }
@@ -32,9 +30,6 @@ function psad_init()
         // Build sass
         global $wc_psad_less;
         $wc_psad_less->plugin_build_sass();
-
-        wp_redirect(admin_url('admin.php?page=wc-sort-display', 'relative'));
-        exit;
     }
 
     wc_psad_plugin_textdomain();
@@ -113,6 +108,6 @@ function psad_upgrade_plugin()
         WC_PSAD_Functions::flush_cached();
     }
 
-    update_option('wc_psad_lite_version', '1.8.2');
+    update_option('wc_psad_lite_version', WC_PSAD_VERSION );
 }
 ?>
