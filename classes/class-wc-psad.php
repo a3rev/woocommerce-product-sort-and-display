@@ -103,7 +103,7 @@ class WC_PSAD
 				remove_action( 'woo_head', 'add_responsi_pagination_theme',11 );
 				remove_action( 'a3rev_head', 'add_responsi_pagination_theme',11 );
 				remove_action( 'woo_loop_after', 'responsi_pagination', 10, 0 );
-				remove_action( 'a3rev_loop_after', 'responsi_pagination', 10, 0 );
+				remove_action( 'responsi_loop_after', 'responsi_pagination', 10, 0 );
 				remove_action( 'responsi_catalog_ordering', 'woocommerce_catalog_ordering', 30 );
 			}
 		}
