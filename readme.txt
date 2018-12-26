@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 4.9.6
-Stable tag: 1.8.4
+Tested up to: 5.0.2
+Stable tag: 1.8.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,19 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.5 - 2018/12/26 =
+* This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.
+* Tweak - Test for compatibility with WordPress 5.0.2 and WordPress 4.9.9
+* Tweak - Test for compatibility with WooCommerce 3.5.3
+* Tweak - Create new structure for future development of Gutenberg Blocks
+* Framework - Performance improvement.  Replace wp_remote_fopen  with file_get_contents for get web fonts
+* Framework - Performance improvement. Define new variable `is_load_google_fonts` if admin does not require to load google fonts
+* Credit - Props to Derek for alerting us to the framework google fonts performance issue
+* Framework - Register style name for dynamic style of plugin for use with Gutenberg block
+* Framework - Update Modal script and style to version 4.1.1
+* Framework - Update a3rev Plugin Framework to version 2.1.0
+* Framework - Test and update for compatibility with PHP 7.3
 
 = 1.8.4 - 2018/05/26 =
 * This maintenance update is for compatibility with WordPress 4.9.6 and WooCommerce 3.4.0 and the new GDPR compliance requirements for users in the EU 
@@ -461,6 +474,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.5 =
+This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.
 
 = 1.8.4 =
 Maintenance Update. Compatibility with WooCommerce 3.4.0, WordPress 4.9.6 and the new GDPR compliance requirements for users in the EU

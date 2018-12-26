@@ -205,7 +205,7 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 
 		$wc_version = get_option( 'woocommerce_version', '1.0' );
 
-		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_images' );
+		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_catalog' );
 		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
 			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
 		}
