@@ -25,6 +25,14 @@ class WC_PSAD
 		$this->init();
 	}
 
+	public function is_wc_36_or_larger() {
+		if ( version_compare( WC_VERSION, '3.6.0', '>=' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public function init () {
 		global $psad_queries_cached_enable;
 		$psad_queries_cached_enable = get_option( 'psad_queries_cached_enable', 'no' );
@@ -56,6 +64,22 @@ class WC_PSAD
 		add_action( 'wp_enqueue_scripts', array( $this, 'include_customized_style'), 12 );
 		//add_action( 'woocommerce_after_shop_loop', array( $this, 'psad_wp_enqueue_style'), 12 );
 
+	}
+
+	public function remove_product_query_filters() {
+		remove_filter( 'posts_clauses', array( $this, 'order_by_onsale_post_clauses' ) );
+	}
+
+	public function order_by_onsale_post_clauses( $args ) {
+		global $wpdb;
+		$join_sql = '';
+		if ( ! strstr( $args['join'], 'wc_product_meta_lookup' ) ) {
+			$join_sql = " LEFT JOIN {$wpdb->wc_product_meta_lookup} wc_product_meta_lookup ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
+		}
+		$args['join'] .= $join_sql;
+		$args['orderby'] = ' wc_product_meta_lookup.onsale DESC, wc_product_meta_lookup.product_id DESC ';
+
+		return $args;
 	}
 
 	public function get_sort_options() {
@@ -415,7 +439,7 @@ class WC_PSAD
 
 				if ( ! $list_products ) {
 
-					$display_type	= get_woocommerce_term_meta( $category->term_id, 'display_type', true );
+					$display_type	= get_term_meta( $category->term_id, 'display_type', true );
 					if (!$display_type || $display_type == '')
 						$display_type = $global_display_type;
 
@@ -483,9 +507,13 @@ class WC_PSAD
 						$ordering_args = array();
 						switch ( $psad_shop_product_show_type ) {
 							case 'onsale' :
-								$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
-								$ordering_args['order']    = 'ASC';
-								$ordering_args['meta_key'] = '_psad_onsale_order';
+								if ( $this->is_wc_36_or_larger() ) {
+									add_filter( 'posts_clauses', array( $this, 'order_by_onsale_post_clauses' ) );
+								} else {
+									$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
+									$ordering_args['order']    = 'ASC';
+									$ordering_args['meta_key'] = '_psad_onsale_order';
+								}
 								break;
 							case 'featured' :
 								$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
@@ -507,6 +535,7 @@ class WC_PSAD
 					}
 
 					$products = query_posts( $product_args );
+					$this->remove_product_query_filters();
 
 					$psad_shop_drill_down = get_option('psad_shop_drill_down', 'yes');
 					$have_products = false;

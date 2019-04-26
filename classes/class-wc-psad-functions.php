@@ -11,6 +11,14 @@
  */
 class WC_PSAD_Functions 
 {	
+	public function is_wc_36_or_larger() {
+		if ( version_compare( WC_VERSION, '3.6.0', '>=' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public static function auto_create_order_keys_all_products() {
 		global $wpdb;
 		
@@ -27,11 +35,14 @@ class WC_PSAD_Functions
 				}
 
 				if ( $product ) {
-					if ( $product->is_on_sale() ) {
-						update_post_meta( $a_product->ID, '_psad_onsale_order', $product->get_price() );
-					} else {
-						update_post_meta( $a_product->ID, '_psad_onsale_order', 10000000000000 );
+					if ( ! $this->is_wc_36_or_larger() ) {
+						if ( $product->is_on_sale() ) {
+							update_post_meta( $a_product->ID, '_psad_onsale_order', $product->get_price() );
+						} else {
+							update_post_meta( $a_product->ID, '_psad_onsale_order', 10000000000000 );
+						}
 					}
+
 					if ( $product->is_featured() ) {
 						update_post_meta( $a_product->ID, '_psad_featured_order', $product->get_price() );
 					} else {
@@ -55,10 +66,12 @@ class WC_PSAD_Functions
 			$product 	= wc_get_product( $post );
 		}
 		if ( $product ) {
-			if ( $product->is_on_sale() ) {
-				update_post_meta( $post_id, '_psad_onsale_order', $product->get_price() );
-			} else {
-				update_post_meta( $post_id, '_psad_onsale_order', 10000000000000 );
+			if ( ! $this->is_wc_36_or_larger() ) {
+				if ( $product->is_on_sale() ) {
+					update_post_meta( $post_id, '_psad_onsale_order', $product->get_price() );
+				} else {
+					update_post_meta( $post_id, '_psad_onsale_order', 10000000000000 );
+				}
 			}
 			if ( $product->is_featured() ) {
 				update_post_meta( $post_id, '_psad_featured_order', $product->get_price() );
@@ -85,9 +98,22 @@ class WC_PSAD_Functions
 		}
 		switch ( $orderby_value ) {
 			case 'onsale' :
-				$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
-				$ordering_args['order']    = 'ASC';
-				$ordering_args['meta_key'] = '_psad_onsale_order';
+				if ( $this->is_wc_36_or_larger() ) {
+					global $wpdb;
+					$join_sql = '';
+					if ( empty( $ordering_args['join'] ) ) {
+						$ordering_args['join'] = '';
+					}
+					if ( ! strstr( $ordering_args['join'], 'wc_product_meta_lookup' ) ) {
+						$join_sql = " LEFT JOIN {$wpdb->wc_product_meta_lookup} wc_product_meta_lookup ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
+					}
+					$ordering_args['join'] .= $join_sql;
+					$ordering_args['orderby'] = ' wc_product_meta_lookup.onsale DESC, wc_product_meta_lookup.product_id DESC ';
+				} else {
+					$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
+					$ordering_args['order']    = 'ASC';
+					$ordering_args['meta_key'] = '_psad_onsale_order';
+				}
 				break;
 			case 'featured' :
 				$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );

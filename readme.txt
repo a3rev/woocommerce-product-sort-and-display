@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 5.0.2
-Stable tag: 1.8.5
+Tested up to: 5.2.0
+Stable tag: 1.8.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,15 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.6 - 2019/04/26 =
+* This maintenance update is tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility  
+* Tweak - Test for compatibility with WordPress 5.2.0
+* Tweak - Test for compatibility with WooCommerce 3.6.2
+* Tweak - Add filter to post_clauses for sort type On Sale with connect to new lookup table database of WC 3.6.0
+* Tweak - Update get_woocommerce_term_meta to get_term_meta to work with WooCommerce 3.6.0
+* Tweak - Update update_woocommerce_term_meta  to update_term_meta to work with WooCommerce 3.6.0
+* Tweak – Maintain backward compatibility to WooCommerce version 3.5.0
 
 = 1.8.5 - 2018/12/26 =
 * This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.

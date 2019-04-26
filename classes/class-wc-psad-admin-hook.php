@@ -155,7 +155,7 @@ class WC_PSAD_Settings_Hook
 		if ( $column == 'psad_shop_page' ) {
 			if ( $term && $term->parent == 0 ) {
 				$checked = '';
-				$psad_include_shop_page = get_woocommerce_term_meta( $id, 'psad_include_shop_page', true );
+				$psad_include_shop_page = get_term_meta( $id, 'psad_include_shop_page', true );
 				if ( '' == $psad_include_shop_page || 1 == $psad_include_shop_page ) {
 					$checked = 'checked="checked"';
 				}
@@ -181,7 +181,7 @@ class WC_PSAD_Settings_Hook
 		global $wpdb;
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat%' ) );
 
-		update_woocommerce_term_meta( $_POST['tax_id'], 'psad_include_shop_page', esc_attr( $_POST['psad_include_shop_page'] ) );
+		update_term_meta( $_POST['tax_id'], 'psad_include_shop_page', esc_attr( $_POST['psad_include_shop_page'] ) );
 	}
 
 	public function feature_product() {
