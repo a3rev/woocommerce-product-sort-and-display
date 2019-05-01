@@ -35,7 +35,7 @@ class WC_PSAD_Functions
 				}
 
 				if ( $product ) {
-					if ( ! $this->is_wc_36_or_larger() ) {
+					if ( ! self::is_wc_36_or_larger() ) {
 						if ( $product->is_on_sale() ) {
 							update_post_meta( $a_product->ID, '_psad_onsale_order', $product->get_price() );
 						} else {
@@ -66,7 +66,7 @@ class WC_PSAD_Functions
 			$product 	= wc_get_product( $post );
 		}
 		if ( $product ) {
-			if ( ! $this->is_wc_36_or_larger() ) {
+			if ( ! self::is_wc_36_or_larger() ) {
 				if ( $product->is_on_sale() ) {
 					update_post_meta( $post_id, '_psad_onsale_order', $product->get_price() );
 				} else {
@@ -98,7 +98,7 @@ class WC_PSAD_Functions
 		}
 		switch ( $orderby_value ) {
 			case 'onsale' :
-				if ( $this->is_wc_36_or_larger() ) {
+				if ( self::is_wc_36_or_larger() ) {
 					global $wpdb;
 					$join_sql = '';
 					if ( empty( $ordering_args['join'] ) ) {

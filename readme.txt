@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 5.2.0
-Stable tag: 1.8.6
+Tested up to: 5.1.1
+Stable tag: 1.8.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,10 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.8.7 - 2019/05/01 =
+* Maintenance update. Please run this now to resolve a PHP Fatal Error when updating products.
+* Fix - Update $this to self to resolve Fatal Error when updating a product.
 
 = 1.8.6 - 2019/04/26 =
 * This maintenance update is tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility  
@@ -483,6 +487,12 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.8.7 =
+Maintenance update. Please run this now to resolve a PHP Fatal Error when updating products.
+
+= 1.8.6 =
+This maintenance update is tweaks for compatibility with WordPress 5.2.0 and WooCommerce 3.6.0 major new versions whilst maintaining backward compatibility.
 
 = 1.8.5 =
 This maintenance update is for compatibility with WordPress 5.0.2, WooCommerce 3.5.3 and PHP 7.3. It also includes performance updates to the plugin framework.
