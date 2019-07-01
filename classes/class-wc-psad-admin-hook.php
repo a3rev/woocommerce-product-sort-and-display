@@ -235,13 +235,13 @@ class WC_PSAD_Settings_Hook
             'css' => 'border: none; padding: 0; background: none;'
         );
 
-		$pro_box = '<a href="'.WC_PSAD_AUTHOR_URI.'" target="_blank" alt="'.__('WooCommerce Product Sort and Display Pro', 'woocommerce-product-sort-and-display' ).'"><img src="'.WC_PSAD_IMAGES_URL.'/product-sort-and-display-pro.png" /></a>';
+		$pro_box = '<a href="'.WC_PSAD_AUTHOR_URI.'" target="_blank" alt="'.__('WooCommerce Product Sort and Display Pro', 'woocommerce-product-sort-and-display' ).'"><img src="'.WC_PSAD_IMAGES_URL.'/product-sort-and-display-pro.jpg" /></a>';
 		$boxes[] = array(
 			'content' => $pro_box,
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
-		$free_woocommerce_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WooCommerce Plugins', 'woocommerce-product-sort-and-display' ).'"><img src="'.WC_PSAD_IMAGES_URL.'/free-woocommerce-plugins.png" /></a>';
+		$free_woocommerce_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WooCommerce Plugins', 'woocommerce-product-sort-and-display' ).'"><img src="'.WC_PSAD_IMAGES_URL.'/free-woocommerce-plugins.jpg" /></a>';
 
 		$boxes[] = array(
 			'content' => $free_woocommerce_box,
