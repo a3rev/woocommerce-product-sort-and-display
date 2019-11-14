@@ -70,7 +70,7 @@ nav.woo-pagination a:link, nav.woo-pagination a:visited, nav.woo-pagination a:ac
 .pbc_content .infscr-loading,
 .wc_content #infscr-loading,
 .wc_content .infscr-loading {background:none repeat scroll 0 0 #000;bottom:0!important;color:#fff;left:32%!important;margin:0;opacity:.8;padding:2% 1%;position:absolute;text-align:center;width:30%;min-width:200px;font-size:12px!important;font-family:"Open Sans",sans-serif!important;line-height:1!important;border-radius:5px;}
-.pbc_content #infscr-loading img,.wc_content #infscr-loading img{width:auto!important;}
+.pbc_content #infscr-loading img,.wc_content #infscr-loading img{width:auto!important;margin: auto!important;}
 @media only screen and (max-width:480px){
 .pbc_content #infscr-loading,.wc_content #infscr-loading{left:0!important;width:100%!important;}
 }

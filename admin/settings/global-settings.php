@@ -124,7 +124,7 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 		}
 		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST['psad_flush_cached'] )  )  {
 			delete_option( 'psad_flush_cached' );
-			WC_PSAD_Functions::flush_cached();
+			\A3Rev\WCPSAD\Functions::flush_cached();
 		}
 	}
 	

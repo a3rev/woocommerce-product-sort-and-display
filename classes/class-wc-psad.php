@@ -18,7 +18,10 @@
  * dont_show_product_on_shop()
  * rewrite_shop_page()
  */
-class WC_PSAD
+
+namespace A3Rev\WCPSAD;
+
+class Main
 {
 
 	public function __construct() {
@@ -335,7 +338,7 @@ class WC_PSAD
 
 		$product_categories = false;
 		$transient_parameter = 'role='.$user_roles;
-		$transient_name = WC_PSAD_Functions::generate_transient_name( 'a3_shop_cat', $transient_parameter );
+		$transient_name = Functions::generate_transient_name( 'a3_shop_cat', $transient_parameter );
 		if ( $psad_queries_cached_enable == 'yes' && '' != $transient_name ) {
 			// Get cached shop categories query results
 			$product_categories = get_transient( $transient_name );
@@ -430,7 +433,7 @@ class WC_PSAD
 				$list_products = false;
 
 				$transient_parameter = 'cat='.$category->term_id.'&show_type='.$psad_shop_product_show_type.'&number='.$psad_shop_product_per_page.'&role='.$user_roles;
-				$transient_name = WC_PSAD_Functions::generate_transient_name( 'a3_shop_cat_products', $transient_parameter );
+				$transient_name = Functions::generate_transient_name( 'a3_shop_cat_products', $transient_parameter );
 
 				if ( $psad_queries_cached_enable == 'yes' && '' != $transient_name ) {
 					// Get cached shop each category query results
@@ -701,5 +704,3 @@ class WC_PSAD
 	}
 
 }
-$GLOBALS['wc_psad'] = new WC_PSAD();
-?>

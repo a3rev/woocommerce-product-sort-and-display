@@ -9,7 +9,10 @@
  * add_custom_options_sort()
  * change_orderby_query()
  */
-class WC_PSAD_Functions 
+
+namespace A3Rev\WCPSAD;
+
+class Functions 
 {	
 	public function is_wc_36_or_larger() {
 		if ( version_compare( WC_VERSION, '3.6.0', '>=' ) ) {
@@ -329,4 +332,3 @@ class WC_PSAD_Functions
 		
 	}
 }
-?>

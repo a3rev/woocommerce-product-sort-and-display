@@ -1,0 +1,22 @@
+{
+    "name": "a3rev/wc-product-sort-and-display",
+    "description": "Take control of your WooCommerce Shop random product display with WooCommerce Show Products by Category. Sort and show products on Shop page by category with 'On Sale' or 'Featured' products showing first. Products showing and total products per category count for intelligent viewing.",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name": "a3rev Software",
+            "email": "admin@a3rev.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "require": {
+        "php": ">=5.6|>=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "A3Rev\\WCPSAD\\": [ "classes/" ]
+        }
+    }
+}

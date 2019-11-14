@@ -14,7 +14,9 @@
  * plugin_extra_links()
  */
 
-class WC_PSAD_Settings_Hook
+namespace A3Rev\WCPSAD;
+
+class Admin_Hook
 {
 	
 	public function __construct() {
@@ -181,7 +183,7 @@ class WC_PSAD_Settings_Hook
 		global $wpdb;
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat%' ) );
 
-		update_term_meta( $_POST['tax_id'], 'psad_include_shop_page', esc_attr( $_POST['psad_include_shop_page'] ) );
+		update_term_meta( absint( $_POST['tax_id'] ), 'psad_include_shop_page', sanitize_text_field( $_POST['psad_include_shop_page'] ) );
 	}
 
 	public function feature_product() {
@@ -202,7 +204,7 @@ class WC_PSAD_Settings_Hook
 	
 	public function psad_yellow_message_dontshow() {
 		check_ajax_referer( 'psad_yellow_message_dontshow', 'security' );
-		$option_name   = $_REQUEST['option_name'];
+		$option_name   = sanitize_key( $_REQUEST['option_name'] );
 		update_option( $option_name, 1 );
 		die();
 	}
@@ -273,6 +275,3 @@ class WC_PSAD_Settings_Hook
 		return $actions;
 	}
 }
-
-$GLOBALS['wc_psad_settings_hook'] = new WC_PSAD_Settings_Hook();
-?>

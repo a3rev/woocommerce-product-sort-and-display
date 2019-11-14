@@ -2,13 +2,15 @@
 /**
  * Register Activation Hook
  */
+
+use A3Rev\WCPSAD;
 function wc_psad_install()
 {
     global $wpdb;
 
     global $wc_psad_admin_init;
 
-    WC_PSAD_Functions::auto_create_order_keys_all_products();
+    WCPSAD\Functions::auto_create_order_keys_all_products();
     update_option('wc_psad_lite_version', WC_PSAD_VERSION );
     delete_metadata( 'user', 0, $wc_psad_admin_init->plugin_name . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
 
@@ -57,13 +59,13 @@ add_filter( $wc_psad_admin_init->plugin_name . '_plugin_extension_boxes', array(
 add_action( 'plugin_action_links_' . WC_PSAD_NAME, array( $wc_psad_settings_hook, 'settings_plugin_links' ) );
 
 // Update Onsale order and Featured order value
-add_action('save_post', array('WC_PSAD_Functions', 'update_orders_value'), 101, 2);
+add_action( 'save_post', array( '\A3Rev\WCPSAD\Functions', 'update_orders_value' ), 101, 2 );
 
 // Add custom options Onsale and Featured into woocommerce default sort dropdown
-add_filter( 'woocommerce_catalog_orderby', array( 'WC_PSAD_Functions', 'add_custom_options_sort' ), 101 );
+add_filter( 'woocommerce_catalog_orderby', array( '\A3Rev\WCPSAD\Functions', 'add_custom_options_sort' ), 101 );
 
 // Update orderby query for custom sort
-add_filter( 'woocommerce_get_catalog_ordering_args', array( 'WC_PSAD_Functions', 'change_orderby_query' ), 101 );
+add_filter( 'woocommerce_get_catalog_ordering_args', array( '\A3Rev\WCPSAD\Functions', 'change_orderby_query' ), 101 );
 
 // Check upgrade functions
 add_action('init', 'psad_upgrade_plugin');
@@ -71,7 +73,7 @@ function psad_upgrade_plugin()
 {
     if (version_compare(get_option('wc_psad_lite_version'), '1.0.2') === -1) {
         update_option('wc_psad_lite_version', '1.0.2');
-        WC_PSAD_Functions::upgrade_version_1_0_2();
+        WCPSAD\Functions::upgrade_version_1_0_2();
     }
 
     if (version_compare(get_option('wc_psad_lite_version'), '1.1.0') === -1) {
@@ -93,7 +95,7 @@ function psad_upgrade_plugin()
 
     if ( version_compare( get_option( 'wc_psad_lite_version') , '1.5.0', '<' ) ) {
         update_option('wc_psad_lite_version', '1.5.0');
-        WC_PSAD_Functions::auto_create_order_keys_all_products();
+        WCPSAD\Functions::auto_create_order_keys_all_products();
     }
 
     // Upgrade to 1.5.1
@@ -105,7 +107,7 @@ function psad_upgrade_plugin()
     // Upgrade to 1.5.3
     if ( version_compare(get_option('wc_psad_lite_version'), '1.5.3') === -1 ) {
         update_option('wc_psad_lite_version', '1.5.3');
-        WC_PSAD_Functions::flush_cached();
+        WCPSAD\Functions::flush_cached();
     }
 
     update_option('wc_psad_lite_version', WC_PSAD_VERSION );

@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 4.5
-Tested up to: 5.2.2
-Stable tag: 1.8.8
+Tested up to: 5.3
+Stable tag: 1.9.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,16 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 1.9.0 - 2019/11/14 =
+* This feature release has a lot including compatibility with WooCommerce 3.8.0, WordPress 5.3.0, PHP upgrade to Composer PHP Dependency Manger and a full security review and update.
+* Feature - Plugin fully refactored to Composer for cleaner code and faster PHP code
+* Tweak - Test for compatibility with WordPress 5.3.0
+* Tweak - Test for compatibility with WooCommerce 3.8.0
+* Tweak - Remove the hard coded PHP error_reporting display errors false from compile sass to css
+* Dev - Replace file_get_contents with HTTP API wp_remote_get
+* Dev - Ensure that all inputs are sanitized and all outputs are escaped.
+* Fix - Update style for endless scroll page loading spinner show center.
 
 = 1.8.8 - 2019/06/29 =
 * This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and WooCommerce 3.6.4
@@ -493,6 +503,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 1.9.0 =
+This feature release has a lot including compatibility with WooCommerce 3.8.0, WordPress 5.3.0, PHP upgrade to Composer PHP Dependency Manger and a full security review and update.
 
 = 1.8.8 =
 This is a maintenance upgrade to fix a potentially fatal error conflict with sites running PHP 7.3 plus compatibility with WordPress v 5.2.2 and WooCommerce 3.6.4
