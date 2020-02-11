@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-          "A3Rev\\WCPSAD\\": [ "classes/" ]
+          "A3Rev\\WCPSAD\\": [ "admin/", "classes/" ]
         }
     }
 }

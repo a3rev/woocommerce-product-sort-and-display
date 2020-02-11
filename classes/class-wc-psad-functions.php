@@ -14,8 +14,16 @@ namespace A3Rev\WCPSAD;
 
 class Functions 
 {	
-	public function is_wc_36_or_larger() {
+	public static function is_wc_36_or_larger() {
 		if ( version_compare( WC_VERSION, '3.6.0', '>=' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static function is_wc_38_or_larger() {
+		if ( version_compare( WC_VERSION, '3.8.0', '>=' ) ) {
 			return true;
 		}
 
@@ -92,26 +100,15 @@ class Functions
 	}
 
 	public static function change_orderby_query( $ordering_args ) {
-		$woocommerce_db_version = get_option( 'woocommerce_db_version', null );
-		
-		if ( version_compare( $woocommerce_db_version, '2.1', '<' ) ) {
-			$orderby_value = isset( $_GET['orderby'] ) ? woocommerce_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
-		} else {
-			$orderby_value = isset( $_GET['orderby'] ) ? wc_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
-		}
-		switch ( $orderby_value ) {
+		$orderby = $ordering_args['orderby'];
+		$order   = $ordering_args['order'];
+
+		switch ( $orderby ) {
 			case 'onsale' :
-				if ( self::is_wc_36_or_larger() ) {
-					global $wpdb;
-					$join_sql = '';
-					if ( empty( $ordering_args['join'] ) ) {
-						$ordering_args['join'] = '';
-					}
-					if ( ! strstr( $ordering_args['join'], 'wc_product_meta_lookup' ) ) {
-						$join_sql = " LEFT JOIN {$wpdb->wc_product_meta_lookup} wc_product_meta_lookup ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
-					}
-					$ordering_args['join'] .= $join_sql;
-					$ordering_args['orderby'] = ' wc_product_meta_lookup.onsale DESC, wc_product_meta_lookup.product_id DESC ';
+				if ( self::is_wc_38_or_larger() ) {
+					add_filter( 'posts_clauses', array( __CLASS__, 'order_by_onsale_post_clauses' ) );
+				} elseif ( self::is_wc_36_or_larger() ) {
+					$ordering_args = order_by_onsale_post_clauses( $ordering_args );
 				} else {
 					$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
 					$ordering_args['order']    = 'ASC';
@@ -123,9 +120,79 @@ class Functions
 				$ordering_args['order']    = 'ASC';
 				$ordering_args['meta_key'] = '_psad_featured_order';
 				break;
+			case 'price':
+				$callback = 'DESC' === $order ? 'order_by_price_desc_post_clauses' : 'order_by_price_asc_post_clauses';
+				add_filter( 'posts_clauses', array( __CLASS__, $callback ) );
+				break;
+			case 'popularity':
+				add_filter( 'posts_clauses', array( __CLASS__, 'order_by_popularity_post_clauses' ) );
+				break;
+			case 'rating':
+				add_filter( 'posts_clauses', array( __CLASS__, 'order_by_rating_post_clauses' ) );
+				break;
 		}
 		
 		return $ordering_args;
+	}
+
+	public static function order_by_onsale_post_clauses( $args ) {
+		if ( empty( $args['join'] ) ) {
+			$args['join'] = '';
+		}
+
+		$args['join']    = self::append_product_sorting_table_join( $args['join'] );
+		$args['orderby'] = ' wc_product_meta_lookup.onsale DESC, wc_product_meta_lookup.product_id DESC ';
+
+		return $args;
+	}
+
+	public static function order_by_price_desc_post_clauses( $args ) {
+		if ( empty( $args['join'] ) ) {
+			$args['join'] = '';
+		}
+
+		$args['join']    = self::append_product_sorting_table_join( $args['join'] );
+		$args['orderby'] = ' wc_product_meta_lookup.max_price DESC, wc_product_meta_lookup.product_id DESC ';
+		return $args;
+	}
+
+	public static function order_by_price_asc_post_clauses( $args ) {
+		if ( empty( $args['join'] ) ) {
+			$args['join'] = '';
+		}
+
+		$args['join']    = self::append_product_sorting_table_join( $args['join'] );
+		$args['orderby'] = ' wc_product_meta_lookup.min_price ASC, wc_product_meta_lookup.product_id DESC ';
+		return $args;
+	}
+
+	public static function order_by_popularity_post_clauses( $args ) {
+		if ( empty( $args['join'] ) ) {
+			$args['join'] = '';
+		}
+
+		$args['join']    = self::append_product_sorting_table_join( $args['join'] );
+		$args['orderby'] = ' wc_product_meta_lookup.total_sales DESC, wc_product_meta_lookup.product_id DESC ';
+		return $args;
+	}
+
+	public static function order_by_rating_post_clauses( $args ) {
+		if ( empty( $args['join'] ) ) {
+			$args['join'] = '';
+		}
+
+		$args['join']    = self::append_product_sorting_table_join( $args['join'] );
+		$args['orderby'] = ' wc_product_meta_lookup.average_rating DESC, wc_product_meta_lookup.product_id DESC ';
+		return $args;
+	}
+
+	public static function append_product_sorting_table_join( $sql ) {
+		global $wpdb;
+
+		if ( ! strstr( $sql, 'wc_product_meta_lookup' ) ) {
+			$sql .= " LEFT JOIN {$wpdb->wc_product_meta_lookup} wc_product_meta_lookup ON $wpdb->posts.ID = wc_product_meta_lookup.product_id ";
+		}
+		return $sql;
 	}
 
 	public static function generate_transient_name( $prefix = '' , $transient_string = '' ) {
@@ -137,13 +204,18 @@ class Functions
 		return $transient_name;
 	}
 
-	public static function flush_cached() {
+	public static function flush_cached_cat_list() {
 		global $wpdb;
 
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat%' ) );
-		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat_products%' ) );
-
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_s_cat%' ) );
+	}
+
+	public static function flush_cached() {
+		global $wpdb;
+
+		self::flush_cached_cat_list();
+		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat_products%' ) );
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_s_p_cat_%' ) );
 	}
 	

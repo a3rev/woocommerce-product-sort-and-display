@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork\Tabs {
+
+use A3Rev\WCPSAD\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC Global Settings Tab
 
@@ -22,7 +26,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_PSAD_Global_Settings_Tab extends WC_PSAD_Admin_UI
+class Global_Settings extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +107,8 @@ class WC_PSAD_Global_Settings_Tab extends WC_PSAD_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/global-settings.php' );
+		global $wc_psad_global_settings;
+		$wc_psad_global_settings = new FrameWork\Settings\Global_Panel();
 		
 	}
 	
@@ -112,9 +117,9 @@ class WC_PSAD_Global_Settings_Tab extends WC_PSAD_Admin_UI
 	/* Call tab layout from Admin Init 
 	/*-----------------------------------------------------------------------------------*/
 	public function tab_manager() {
-		//global $wc_psad_admin_init;
+		//global ${$this->plugin_prefix.'admin_init'};
 		
-		//$wc_psad_admin_init->admin_settings_tab( $this->parent_page, $this->tab_data() );
+		//${$this->plugin_prefix.'admin_init'}->admin_settings_tab( $this->parent_page, $this->tab_data() );
 		$this->plugin_extension_start();
 		wc_psad_global_settings_form();
 		$this->plugin_extension_end();
@@ -122,8 +127,10 @@ class WC_PSAD_Global_Settings_Tab extends WC_PSAD_Admin_UI
 	}
 }
 
-global $wc_psad_global_settings_tab;
-$wc_psad_global_settings_tab = new WC_PSAD_Global_Settings_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_psad_global_settings_tab_manager()
@@ -134,4 +141,4 @@ function wc_psad_global_settings_tab_manager() {
 	$wc_psad_global_settings_tab->tab_manager();
 }
 
-?>
+}

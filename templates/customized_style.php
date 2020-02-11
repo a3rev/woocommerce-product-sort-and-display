@@ -103,10 +103,13 @@ nav.woo-pagination a:link, nav.woo-pagination a:visited, nav.woo-pagination a:ac
 	-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
+.click_more_link {
+	display: inline-block;
+}
 
 /* Endless Scroll Style for Shop Page */
 <?php
-global $wc_psad_fonts_face, $wc_psad_admin_interface;
+global ${WC_PSAD_PREFIX.'fonts_face'}, ${WC_PSAD_PREFIX.'admin_interface'};
 $psad_es_shop_bt_type = get_option( 'psad_es_shop_bt_type' );
 // Button Style
 $psad_es_shop_bt_align = get_option( 'psad_es_shop_bt_align' );
@@ -133,24 +136,28 @@ $psad_es_shop_link_font_hover_color = get_option( 'psad_es_shop_link_font_hover_
 	background: -moz-gradient(center top, <?php echo $psad_es_shop_bt_bg_from;?> 0%, <?php echo $psad_es_shop_bt_bg_to;?> 100%) !important;
 	
 	/*Border*/
-	<?php echo $wc_psad_admin_interface->generate_border_css( get_option( 'psad_es_shop_bt_border' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'admin_interface'}->generate_border_css( get_option( 'psad_es_shop_bt_border' ) ); ?>
 	
 	/* Shadow */
-	<?php echo $wc_psad_admin_interface->generate_shadow_css( get_option( 'psad_es_shop_bt_shadow' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'admin_interface'}->generate_shadow_css( get_option( 'psad_es_shop_bt_shadow' ) ); ?>
 	
 	/* Font */
-	<?php echo $wc_psad_fonts_face->generate_font_css( get_option( 'psad_es_shop_bt_font' ) ); ?>	
+	<?php echo ${WC_PSAD_PREFIX.'fonts_face'}->generate_font_css( get_option( 'psad_es_shop_bt_font' ) ); ?>	
 	
 	padding: <?php echo get_option( 'psad_es_shop_bt_padding_tb' ); ?>px <?php echo get_option( 'psad_es_shop_bt_padding_lr' ); ?>px !important;
+	margin-top: <?php echo get_option( 'psad_es_shop_bt_margin_top', 0 ); ?>px !important;
+	margin-bottom: <?php echo get_option( 'psad_es_shop_bt_margin_bottom', 10 ); ?>px !important;
 
 	text-align:<?php echo $psad_es_shop_bt_align;?> !important;
 	text-decoration: none !important;
 }
 .endless_click_shop a.click_more_link {
 	/* Font */
-	<?php echo $wc_psad_fonts_face->generate_font_css( get_option( 'psad_es_shop_link_font' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'fonts_face'}->generate_font_css( get_option( 'psad_es_shop_link_font' ) ); ?>
 
 	text-align:<?php echo $psad_es_shop_link_align;?> !important;
+	margin-top: <?php echo get_option( 'psad_es_shop_link_margin_top', 0 ); ?>px !important;
+	margin-bottom: <?php echo get_option( 'psad_es_shop_link_margin_bottom', 10 ); ?>px !important;
 }
 .endless_click_shop a.click_more_link:hover{
 	color: <?php echo $psad_es_shop_link_font_hover_color; ?> !important;
@@ -184,13 +191,13 @@ $psad_es_category_item_link_font_hover_color = get_option( 'psad_es_category_ite
 	background: -moz-gradient(center top, <?php echo $psad_es_category_item_bt_bg_from;?> 0%, <?php echo $psad_es_category_item_bt_bg_to;?> 100%) !important;
 	
 	/*Border*/
-	<?php echo $wc_psad_admin_interface->generate_border_css( get_option( 'psad_es_category_item_bt_border' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'admin_interface'}->generate_border_css( get_option( 'psad_es_category_item_bt_border' ) ); ?>
 	
 	/* Shadow */
-	<?php echo $wc_psad_admin_interface->generate_shadow_css( get_option( 'psad_es_view_all_bt_shadow' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'admin_interface'}->generate_shadow_css( get_option( 'psad_es_view_all_bt_shadow' ) ); ?>
 	
 	/* Font */
-	<?php echo $wc_psad_fonts_face->generate_font_css( get_option( 'psad_es_category_item_bt_font' ) ); ?>	
+	<?php echo ${WC_PSAD_PREFIX.'fonts_face'}->generate_font_css( get_option( 'psad_es_category_item_bt_font' ) ); ?>	
 	
 	padding: <?php echo get_option( 'psad_es_view_all_bt_padding_tb' ); ?>px <?php echo get_option( 'psad_es_view_all_bt_padding_lr' ); ?>px !important;
 
@@ -199,7 +206,7 @@ $psad_es_category_item_link_font_hover_color = get_option( 'psad_es_category_ite
 }
 .click_more_each_categories a.click_more_link, .click_more_each_categories span.click_more_link {
 	/* Font */
-	<?php echo $wc_psad_fonts_face->generate_font_css( get_option( 'psad_es_category_item_link_font' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'fonts_face'}->generate_font_css( get_option( 'psad_es_category_item_link_font' ) ); ?>
 
 	text-align:<?php echo $psad_es_category_item_link_align;?> !important;
 }
@@ -234,7 +241,7 @@ if ( $psad_seperator_enable == 'yes' ){
 }
 .product_categories_showing_count {
 	/* Font */
-	<?php echo $wc_psad_fonts_face->generate_font_css( array( 'size' => '11px', 'face' => 'Arial, sans-serif', 'style' => 'italic', 'color' => '#000000' ) ); ?>
+	<?php echo ${WC_PSAD_PREFIX.'fonts_face'}->generate_font_css( array( 'size' => '11px', 'face' => 'Arial, sans-serif', 'style' => 'italic', 'color' => '#000000' ) ); ?>
 }
 .product_categories_showing_count {
 	margin-right:10px;	

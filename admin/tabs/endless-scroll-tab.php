@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork\Tabs {
+
+use A3Rev\WCPSAD\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC Endless Scroll Tab
 
@@ -22,7 +26,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_PSA_Endless_Scroll_Tab extends WC_PSAD_Admin_UI
+class Endless_Scroll extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -103,7 +107,8 @@ class WC_PSA_Endless_Scroll_Tab extends WC_PSAD_Admin_UI
 	public function settings_include() {
 		
 		// Includes Settings file
-		include_once( $this->admin_plugin_dir() . '/settings/endless-scroll-settings.php' );
+		global $wc_psad_endless_scroll_settings;
+		$wc_psad_endless_scroll_settings = new FrameWork\Settings\Endless_Scroll();
 		
 	}
 	
@@ -112,7 +117,7 @@ class WC_PSA_Endless_Scroll_Tab extends WC_PSAD_Admin_UI
 	/* Include form settings panels 
 	/*-----------------------------------------------------------------------------------*/
 	public function tab_manager() {
-		global $wc_psad_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		
 		$this->plugin_extension_start();
 		wc_psad_endless_scroll_settings_form();
@@ -121,8 +126,10 @@ class WC_PSA_Endless_Scroll_Tab extends WC_PSAD_Admin_UI
 	}
 }
 
-global $wc_psad_endless_scroll_tab;
-$wc_psad_endless_scroll_tab = new WC_PSA_Endless_Scroll_Tab();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_psad_global_settings_tab_manager()
@@ -133,4 +140,4 @@ function wc_psad_endless_scroll_tab_manager() {
 	$wc_psad_endless_scroll_tab->tab_manager();
 }
 
-?>
+}

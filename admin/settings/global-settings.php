@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork\Settings {
+
+use A3Rev\WCPSAD\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC PSAD Global Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
+class Global_Panel extends FrameWork\Admin_UI
 {
 	
 	/**
@@ -86,9 +90,11 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );
 			
 		add_action( $this->plugin_name . '_set_default_settings' , array( $this, 'set_default_settings' ) );
-
-		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'after_save_settings' ) );
 		
+		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'after_save_settings' ) );
+
+		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'reset_default_settings' ) );
+
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
 	}
 	
@@ -107,9 +113,19 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
+		global ${$this->plugin_prefix.'admin_interface'};
+		
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
+	}
+	
+	/*-----------------------------------------------------------------------------------*/
+	/* reset_default_settings()
+	/* Reset default settings with function called from Admin Interface */
+	/*-----------------------------------------------------------------------------------*/
+	public function reset_default_settings() {
 		global $wc_psad_admin_interface;
 		
-		$wc_psad_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		$wc_psad_admin_interface->reset_settings( $this->form_fields, $this->option_name, true, true );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -126,6 +142,17 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 			delete_option( 'psad_flush_cached' );
 			\A3Rev\WCPSAD\Functions::flush_cached();
 		}
+		if ( isset( $_POST['bt_save_settings'] ) && isset( $_POST['psad_global_category_reset'] ) ) {
+			delete_option( 'psad_global_category_reset' );
+			$metadata = array('psad_shop_product_per_page', 'psad_shop_product_show_type' );
+			foreach ( $metadata as $meta_key ) {
+				if ( version_compare( WC_VERSION, '2.6.0', '>=' ) ) {
+					delete_metadata( 'term', '', $meta_key, '', true );
+				} else {
+					delete_metadata( 'woocommerce_term', '', $meta_key, '', true );
+				}
+			}
+		}
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -133,9 +160,9 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $wc_psad_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$wc_psad_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -179,10 +206,10 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $wc_psad_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		$output = '';
-		$output .= $wc_psad_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 		
 		return $output;
 	}
@@ -253,36 +280,6 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
 				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
 			),
-			array(
-            	'name' 		=> __( 'WooCommerce Sort & Display Premium', 'woocommerce-product-sort-and-display' ),
-                'type' 		=> 'heading',
-            ),
-            array(
-				'name' 		=> __( 'Advanced Features', 'woocommerce-product-sort-and-display' ),
-				'desc' 		=> '</span></td></tr><tr><td colspan="2"><div class="psad_explanation_message" style="clear:both;">
-<div>'.__( 'The Premium version of this plugin is for those who want Sort and Display applied to their stores Product Category and Product Tag pages. It has ALL the features of this Free version - Apply Sort and Display to the shop page - plus these advanced features:', 'woocommerce-product-sort-and-display' ).'</div>
-<ul style="padding-left: 40px;">
-	<li>* ' . __( 'Apply Sort and display to the entire store - Product Category and Product Tags pages.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Show Sub Categories with products on their Parent Category page.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Set the number of products to show in parent and each child category.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Set Parent Cat to show no products - just show Child cats and products.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'If parent Category has no products because all products are in the child categories set to show child cats with products.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Custom Sort Featured and On Sale is added to WooCommerce Sort features for Category and Tags pages.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Endless Scroll feature for Product Category and Product tag pages.', 'woocommerce-product-sort-and-display' ) . '</li>
-	<li>* ' . __( 'Apply all settings globally from the admin dashboard with individual setting on each category e.g. Sort type, number of products to show.', 'woocommerce-product-sort-and-display' ) . '</li>
-</ul>
-<div>'. sprintf( __( 'The Premium version is a once only payment Lifetime License plugin (not annual subscription). View details here on the <a href="%s" target="_blank">a3rev.com</a> site', 'woocommerce-product-sort-and-display' ), 'http://a3rev.com/shop/woocommerce-product-sort-and-display/' ).'</div>
-				</div><span>',
-				'class'		=> 'psad_explanation',
-				'id' 		=> 'psad_explanation',
-				'type' 		=> 'onoff_checkbox',
-				'default'	=> 'no',
-				'free_version'		=> true,
-				'checked_value'		=> 'yes',
-				'unchecked_value'	=> 'no',
-				'checked_label'		=> __( 'SHOW', 'woocommerce-product-sort-and-display' ),
-				'unchecked_label' 	=> __( 'HIDE', 'woocommerce-product-sort-and-display' ),
-			),
 
 			array(
             	'name' 		=> __( 'DB Query Cache', 'woocommerce-product-sort-and-display' ),
@@ -327,12 +324,12 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
             	'name' 		=> __( 'Shop Page Show Products by Category', 'woocommerce-product-sort-and-display' ),
             	'id'		=> 'psad_shop_page_box',
                 'type' 		=> 'heading',
-                'desc' 		=> sprintf( __("These settings when activated over ride the WooCommerce <a target='_blank' href='%s'>Product Options</a> shop page settings.", 'woocommerce-product-sort-and-display' ), $wc_display_settings_url ),
+                'desc' 		=> sprintf( __("These settings when activated show products sorted into categories on your shop page. You can tweak the display further on the WooCommerce <a target='_blank' href='%s'>Shop page display</a> settings on the customizer.", 'woocommerce-product-sort-and-display' ), $wc_display_settings_url ),
                 'is_box'	=> true,
            	),
 			array(  
 				'name' 		=> __( 'Shop Page', 'woocommerce-product-sort-and-display' ),
-				'desc' 		=> sprintf( __("Sort and display products by category on Shop pages. Sort categories by drop and drag at <a target='_blank' href='%s'>Product Categories</a>.", 'woocommerce-product-sort-and-display' ), admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product', 'relative' ) ),
+				'desc' 		=> sprintf( __("Sort and display products by category on Shop pages. Sort category display order by drop and drag at <a target='_blank' href='%s'>Product Categories</a>.", 'woocommerce-product-sort-and-display' ), admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product', 'relative' ) ),
 				'class'		=> 'psad_shop_page_enable',
 				'id' 		=> 'psad_shop_page_enable',
 				'default'	=> 'yes',
@@ -378,16 +375,6 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 				'css' 		=> 'width:40px;',
 				'default'	=> '4',
 				'free_version'		=> true,
-			),
-			array(  
-				'name' 		=> __( "Product Sort", 'woocommerce-product-sort-and-display' ),
-				'desc' 		=> __('Product type can be set on a Category by category basis with the Pro version', 'woocommerce-product-sort-and-display' ),
-				'id' 		=> 'psad_shop_product_show_type',
-				'type' 		=> 'select',
-				'default'	=> 'menu_order',
-				'free_version'		=> true,
-				'css'		=> 'width: auto;',
-				'options'	=> $sort_options,
 			),
 			array(  
 				'name' 		=> __( 'Product Count', 'woocommerce-product-sort-and-display' ),
@@ -454,6 +441,178 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	 							)
 			),
 
+			array(
+            	'name' 		=> __( 'Global Category Reset', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'id'		=> 'psad_global_category_reset_box',
+           		'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Product Category Reset', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __( "On to reset all custom settings made in the 'Sort & Display' settings on individual Product Categories to the global setting on this page.", 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_global_category_reset',
+				'default'	=> 'no',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+				'free_version'		=> true,
+			),
+			
+			array(
+            	'name' 		=> __( 'Parent / Child Category Page Settings', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_category_page_box',
+                'desc' 		=> sprintf( __("<strong>Note:</strong> Set the WooCommerce <a target='_blank' href='%s'>Category Display</a> to 'Show Subcategories & Products' to show Selected Products from the Parent Category, then the Child Categories. Set 'Show Subcategories' and the Parent Products won't be shown. The settings below apply to all Categories. You can also set a unique display for each Category by editing <a target='_blank' href='%s'>that Category</a>.", 'woocommerce-product-sort-and-display' ), $wc_display_settings_url, admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product' ) ),
+           		'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Product Categories', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("Sort and display products by their Child categories on the Parent Product category pages. Feature can be turned ON and OFF from each Category page.", 'woocommerce-product-sort-and-display' ),
+				'class'		=> 'psad_category_page_enable',
+				'id' 		=> 'psad_category_page_enable',
+				'default'	=> 'yes',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+			),
+			
+			array(
+                'type' 		=> 'heading',
+                'id'		=> 'psad_category_page_enable_container',
+				'class'		=> 'psad_category_page_enable_container',
+           	),
+			array(  
+				'name' 		=> __( 'Empty Parent Categories', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("ON and when a Parent Cat has no products assigned to it (products are assigned to the child categories) selected products from the Child Cats of that Parent will be displayed", 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_category_drill_down',
+				'default'	=> 'yes',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+			),
+			array(  
+				'name' 		=> __( 'Parent / Child Title', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("ON to show Child Category title as Parent / Child title breadcrumb. OFF to only show Child Cat name.", 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_show_parent_title',
+				'default'	=> 'yes',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+			),
+			array(  
+				'name' 		=> __( 'Parent Cat Products (No Child Cats)', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("The number of products to show per Endless Scroll or pagination.", 'woocommerce-product-sort-and-display' ). ' '. __('Default is [default_value].', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_category_product_nosub_per_page',
+				'type' 		=> 'text',
+				'css' 		=> 'width:40px;',
+				'default'	=> '12'
+			),
+			array(  
+				'name' 		=> __( 'Parent Category Products', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("Sets the number of Parent Category Products to show before Child Cat Product Groups.", 'woocommerce-product-sort-and-display' ). ' '. __('Default is [default_value].', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_top_product_per_page',
+				'type' 		=> 'text',
+				'css' 		=> 'width:40px;',
+				'default'	=> '4'
+			),
+			array(  
+				'name' => __( 'Child Cats Per Page', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __('Set the number of Child Categories to show per pagination or endless scroll event.', 'woocommerce-product-sort-and-display' ). ' '. __('Default is [default_value].', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_category_per_page',
+				'type' 		=> 'text',
+				'css' 		=> 'width:40px;',
+				'default'	=> '3'
+			),
+			array(  
+				'name' 		=> __( 'Product Count', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("ON to show product count under category title.", 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_cat_enable_product_showing_count',
+				'default'	=> 'yes',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+			),
+			
+			array(
+            	'name' 		=> __( 'Child Categories Product Display', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_one_level_box',
+                'desc' 		=> __("Settings apply to Child Categories display on its Parent Category Page when the Parent Cat has sort and display activated. You can set custom Product display number and Sort Type for each Child Category by editing the category.", 'woocommerce-product-sort-and-display' ),
+           		'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Number of Product Displayed', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __('Number of Child Category products displayed on its Parent Category page <strong>WHEN</strong> Parent has Sort and Display Feature activated.', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_product_per_page',
+				'type' 		=> 'text',
+				'css' 		=> 'width:40px;',
+				'default'	=> '4'
+			),
+
+			array(  
+				'name' 		=> __( "Product Sort", 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __('Applies to all Child Categories display on Parent Cat Page <strong>WHEN</strong> Parent has Sort and Display Feature activated.', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_product_show_type',
+				'type' 		=> 'select',
+				'default'	=> 'menu_order',
+				'css'		=> 'width: auto;',
+				'options'	=> $sort_options,
+			),
+			
+			array(
+            	'name' 		=> __( 'Tag Page Settings', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_tag_page_box',
+           		'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Tag Page', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("Sort and Display Product tag pages.", 'woocommerce-product-sort-and-display' ),
+				'class'		=> 'psad_tag_page_enable',
+				'id' 		=> 'psad_tag_page_enable',
+				'default'	=> 'yes',
+				'type' 		=> 'onoff_checkbox',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'woocommerce-product-sort-and-display' ),
+				'unchecked_label' 	=> __( 'OFF', 'woocommerce-product-sort-and-display' ),
+			),
+			
+			array(
+                'type' 		=> 'heading',
+                'id'		=> 'psad_tag_page_enable_container',
+				'class'		=> 'psad_tag_page_enable_container',
+           	),
+			array(  
+				'name' 		=> __( 'Tag Products', 'woocommerce-product-sort-and-display' ),
+				'desc' 		=> __("The number of products to show per Endless Scroll or pagination.", 'woocommerce-product-sort-and-display' ). ' '. __('Default is [default_value].', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_tag_product_per_page',
+				'type' 		=> 'text',
+				'css' 		=> 'width:40px;',
+				'default'	=> '12'
+			),
+			array(  
+				'name' 		=> __( "Product Sort", 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_tag_product_show_type',
+				'type' 		=> 'select',
+				'default'	=> 'menu_order',
+				'css'		=> 'width: auto;',
+				'options'	=> $sort_options,
+			),
+		
         ));
 	}
 	
@@ -473,6 +632,12 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 		}
 		if ( $("input.psad_shop_page_enable:checked").val() != 'yes') {
 			$(".psad_shop_page_enable_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
+		}
+		if ( $("input.psad_category_page_enable:checked").val() != 'yes') {
+			$(".psad_category_page_enable_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
+		}
+		if ( $("input.psad_tag_page_enable:checked").val() != 'yes') {
+			$(".psad_tag_page_enable_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
 		}
 		if ( $("input.psad_seperator_enable:checked").val() != 'yes') {
 			$(".psad_seperator_enable_container").css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden', 'margin-bottom' : '0px'} );
@@ -501,6 +666,22 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 				$(".psad_shop_page_enable_container").slideUp();
 			}
 		});
+		$(document).on( "a3rev-ui-onoff_checkbox-switch", '.psad_category_page_enable', function( event, value, status ) {
+			$(".psad_category_page_enable_container").attr('style','display:none;');
+			if ( status == 'true' ) {
+				$(".psad_category_page_enable_container").slideDown();
+			} else {
+				$(".psad_category_page_enable_container").slideUp();
+			}
+		});
+		$(document).on( "a3rev-ui-onoff_checkbox-switch", '.psad_tag_page_enable', function( event, value, status ) {
+			$(".psad_tag_page_enable_container").attr('style','display:none;');
+			if ( status == 'true' ) {
+				$(".psad_tag_page_enable_container").slideDown();
+			} else {
+				$(".psad_tag_page_enable_container").slideUp();
+			}
+		});
 		$(document).on( "a3rev-ui-onoff_checkbox-switch", '.psad_seperator_enable', function( event, value, status ) {
 			$(".psad_seperator_enable_container").attr('style','display:none;');
 			if ( status == 'true' ) {
@@ -518,8 +699,10 @@ class WC_PSAD_Global_Settings extends WC_PSAD_Admin_UI
 	}
 }
 
-global $wc_psad_global_settings;
-$wc_psad_global_settings = new WC_PSAD_Global_Settings();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_psad_global_settings_form()
@@ -530,4 +713,4 @@ function wc_psad_global_settings_form() {
 	$wc_psad_global_settings->settings_form();
 }
 
-?>
+}

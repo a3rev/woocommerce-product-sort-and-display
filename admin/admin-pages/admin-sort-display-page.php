@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork\Pages {
+
+use A3Rev\WCPSAD\FrameWork;
+
 // File Security Check
-if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /*-----------------------------------------------------------------------------------
 WC Admin Sort & Display Page
 
@@ -21,7 +25,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_Admin_Sort_Display_Page extends WC_PSAD_Admin_UI
+class Sort_Display extends FrameWork\Admin_UI
 {	
 	/**
 	 * @var string
@@ -94,9 +98,14 @@ class WC_Admin_Sort_Display_Page extends WC_PSAD_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function tabs_include() {
 		
-		include_once( $this->admin_plugin_dir() . '/tabs/global-settings-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/endless-scroll-tab.php' );
-		include_once( $this->admin_plugin_dir() . '/tabs/view-all-count-meta-tab.php' );
+		global $wc_psad_global_settings_tab;
+		$wc_psad_global_settings_tab = new FrameWork\Tabs\Global_Settings();
+
+		global $wc_psad_endless_scroll_tab;
+		$wc_psad_endless_scroll_tab = new FrameWork\Tabs\Endless_Scroll();
+
+		global $wc_psad_view_all_count_meta_tab;
+		$wc_psad_view_all_count_meta_tab = new FrameWork\Tabs\View_All_Count_Meta();
 		
 	}
 	
@@ -105,15 +114,17 @@ class WC_Admin_Sort_Display_Page extends WC_PSAD_Admin_UI
 	/* Show Settings Page */
 	/*-----------------------------------------------------------------------------------*/
 	public function admin_settings_page() {
-		global $wc_psad_admin_init;
+		global ${$this->plugin_prefix.'admin_init'};
 		
-		$wc_psad_admin_init->admin_settings_page( $this->page_data() );
+		${$this->plugin_prefix.'admin_init'}->admin_settings_page( $this->page_data() );
 	}
 	
 }
 
-global $wc_admin_sort_display_page;
-$wc_admin_sort_display_page = new WC_Admin_Sort_Display_Page();
+}
+
+// global code
+namespace {
 
 /** 
  * wc_admin_sort_display_page_show()
@@ -124,4 +135,4 @@ function wc_admin_sort_display_page_show() {
 	$wc_admin_sort_display_page->admin_settings_page();
 }
 
-?>
+}

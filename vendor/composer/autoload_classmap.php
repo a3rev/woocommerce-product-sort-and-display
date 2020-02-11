@@ -7,6 +7,19 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'A3Rev\\WCPSAD\\Admin_Hook' => $baseDir . '/classes/class-wc-psad-admin-hook.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Admin_Init' => $baseDir . '/admin/admin-init.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Admin_Interface' => $baseDir . '/admin/admin-interface.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Admin_UI' => $baseDir . '/admin/admin-ui.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Fonts_Face' => $baseDir . '/admin/includes/fonts_face.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Less_Sass' => $baseDir . '/admin/less/sass.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Pages\\Sort_Display' => $baseDir . '/admin/admin-pages/admin-sort-display-page.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Settings\\Endless_Scroll' => $baseDir . '/admin/settings/endless-scroll-settings.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Settings\\Global_Panel' => $baseDir . '/admin/settings/global-settings.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Settings\\View_All_Count_Meta' => $baseDir . '/admin/settings/view-all-count-meta-settings.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Tabs\\Endless_Scroll' => $baseDir . '/admin/tabs/endless-scroll-tab.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Tabs\\Global_Settings' => $baseDir . '/admin/tabs/global-settings-tab.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Tabs\\View_All_Count_Meta' => $baseDir . '/admin/tabs/view-all-count-meta-tab.php',
+    'A3Rev\\WCPSAD\\FrameWork\\Uploader' => $baseDir . '/admin/includes/uploader/class-uploader.php',
     'A3Rev\\WCPSAD\\Functions' => $baseDir . '/classes/class-wc-psad-functions.php',
     'A3Rev\\WCPSAD\\Main' => $baseDir . '/classes/class-wc-psad.php',
 );

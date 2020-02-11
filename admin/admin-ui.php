@@ -1,9 +1,11 @@
 <?php
 /* "Copyright 2012 a3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork {
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 A3rev Plugin Admin UI
 
@@ -24,14 +26,14 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_PSAD_Admin_UI
+class Admin_UI
 {
 	/**
 	 * @var string
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.2.0';
+	public $framework_version      = '2.3.0';
 	public $plugin_name            = WC_PSAD_KEY;
 	public $plugin_path            = WC_PSAD_NAME;
 	public $google_api_key_option  = '';
@@ -49,7 +51,9 @@ class WC_PSAD_Admin_UI
 	 * You must change to correct class name that you are working
 	 */
 	public $class_name = 'WC_PSAD';
-	
+
+	public $plugin_prefix = WC_PSAD_PREFIX;
+
 	/**
 	 * @var string
 	 * You must change to correct pro plugin page url on a3rev site
@@ -364,12 +368,9 @@ class WC_PSAD_Admin_UI
 	/* Show upgrade top message for pro fields
 	/*-----------------------------------------------------------------------------------*/
 	public function upgrade_top_message( $echo = false, $setting_id = '' ) {
-		$upgrade_top_message = sprintf( '<div class="pro_feature_top_message">' 
-			. __( 'Advanced Settings - Upgrade to the <a href="%s" target="_blank">%s License</a> to activate these settings.', 'woocommerce-product-sort-and-display' ) 
-			. '</div>'
-			, apply_filters( $this->plugin_name . '_' . $setting_id . '_pro_plugin_page_url', apply_filters( $this->plugin_name . '_pro_plugin_page_url', $this->pro_plugin_page_url ) )
-			, apply_filters( $this->plugin_name . '_' . $setting_id . '_pro_version_name', apply_filters( $this->plugin_name . '_pro_version_name', __( 'Pro Version', 'woocommerce-product-sort-and-display' ) ) )
-		);
+		$upgrade_top_message = '<div class="pro_feature_top_message">' 
+			. __( 'These settings apply to Category Pages and are available in the Premium Sort & Display for WooCommerce Plugin.', 'woocommerce-product-sort-and-display' ) 
+			. '</div>';
 
 		$upgrade_top_message = apply_filters( $this->plugin_name . '_upgrade_top_message', $upgrade_top_message, $setting_id );
 
@@ -445,4 +446,4 @@ class WC_PSAD_Admin_UI
 
 }
 
-?>
+}

@@ -1,9 +1,13 @@
 <?php
 /* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+
+namespace A3Rev\WCPSAD\FrameWork\Settings {
+
+use A3Rev\WCPSAD\FrameWork;
+
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
-?>
-<?php
+
 /*-----------------------------------------------------------------------------------
 WC PSAD View All Products Settings
 
@@ -28,7 +32,7 @@ TABLE OF CONTENTS
 
 -----------------------------------------------------------------------------------*/
 
-class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
+class View_All_Count_Meta extends FrameWork\Admin_UI
 {
 	
 	/**
@@ -87,6 +91,8 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 			
 		add_action( $this->plugin_name . '_set_default_settings' , array( $this, 'set_default_settings' ) );
 
+		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'reset_default_settings' ) );
+
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
 		
 	}
@@ -106,9 +112,19 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 	/* Set default settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function set_default_settings() {
+		global ${$this->plugin_prefix.'admin_interface'};
+		
+		${$this->plugin_prefix.'admin_interface'}->reset_settings( $this->form_fields, $this->option_name, false );
+	}
+
+	/*-----------------------------------------------------------------------------------*/
+	/* reset_default_settings()
+	/* Reset default settings with function called from Admin Interface */
+	/*-----------------------------------------------------------------------------------*/
+	public function reset_default_settings() {
 		global $wc_psad_admin_interface;
 		
-		$wc_psad_admin_interface->reset_settings( $this->form_fields, $this->option_name, false );
+		$wc_psad_admin_interface->reset_settings( $this->form_fields, $this->option_name, true, true );
 	}
 	
 	/*-----------------------------------------------------------------------------------*/
@@ -116,9 +132,9 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
 	public function get_settings() {
-		global $wc_psad_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
-		$wc_psad_admin_interface->get_settings( $this->form_fields, $this->option_name );
+		${$this->plugin_prefix.'admin_interface'}->get_settings( $this->form_fields, $this->option_name );
 	}
 	
 	/**
@@ -162,10 +178,10 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 	/* Call the form from Admin Interface
 	/*-----------------------------------------------------------------------------------*/
 	public function settings_form() {
-		global $wc_psad_admin_interface;
+		global ${$this->plugin_prefix.'admin_interface'};
 		
 		$output = '';
-		$output .= $wc_psad_admin_interface->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
+		$output .= ${$this->plugin_prefix.'admin_interface'}->admin_forms( $this->form_fields, $this->form_key, $this->option_name, $this->form_messages );
 		
 		return $output;
 	}
@@ -175,7 +191,7 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 	/* Init all fields of this form */
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
-		
+
   		// Define settings			
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
 		
@@ -184,6 +200,7 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
             	'name' 		=> __( 'View All Products Link Position', 'woocommerce-product-sort-and-display' ),
                 'type' 		=> 'heading',
                 'id'		=> 'psad_view_all_position_box',
+                'class'		=> 'psad_view_all_links',
                 'is_box'	=> true,
            	),
 			array(  
@@ -213,6 +230,7 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
             	'name' 		=> __( 'View All Products Link Style', 'woocommerce-product-sort-and-display' ),
                 'type' 		=> 'heading',
                 'id'		=> 'psad_view_all_style_box',
+                'class'		=> 'psad_view_all_links',
                 'is_box'	=> true,
            	),
 			array(  
@@ -379,6 +397,119 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 				'free_version'		=> true,
 			),
 
+			array(
+            	'name' 		=> __( 'Product Count Text Style', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_count_meta_style_box',
+                'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Padding', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_count_meta_padding',
+				'type' 		=> 'array_textfields',
+				'ids'		=> array( 
+	 								array(  'id' 		=> 'psad_count_meta_padding_top',
+	 										'name' 		=> __( 'Top', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:40px;',
+	 										'default'	=> 10
+									),
+									array(  'id' 		=> 'psad_count_meta_padding_bottom',
+	 										'name' 		=> __( 'Bottom', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:40px;',
+	 										'default'	=> 10
+									),
+	 							)
+			),
+			array(  
+				'name' 		=> __( 'Count Meta Font', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_count_meta_font',
+				'type' 		=> 'typography',
+				'default'	=> array( 'size' => '11px', 'line_height' => '1.4em', 'face' => 'Arial, sans-serif', 'style' => 'italic', 'color' => '#000000' )
+			),
+
+			// Count Meta Settings
+			array(
+            	'name' 		=> __( 'Category Product Count Dynamic Text', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_categories_count_meta_box',
+                'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Count Meta Text', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_count_meta_text',
+				'type' 		=> 'array_textfields',
+				'ids'		=> array( 
+	 								array(  'id' 		=> 'psad_count_meta_text1',
+	 										'name' 		=> __( '%d - %d', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:120px;',
+	 										'default'	=> __( 'Showing', 'woocommerce-product-sort-and-display' ) 
+									),
+									array(  'id' 		=> 'psad_count_meta_text2',
+	 										'name' 		=> __( '%d', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:60px;',
+	 										'default'	=> __( 'of', 'woocommerce-product-sort-and-display' ) 
+									),
+									array(  'id' 		=> 'psad_count_meta_text3',
+	 										'name' 		=> '',
+	 										'css'		=> 'width:200px;',
+	 										'default'	=> __( 'products in this Category', 'woocommerce-product-sort-and-display' ) 
+									),
+	 							)
+			),
+
+			array(
+            	'name' 		=> __( 'Parent Category Product Count Alignment', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'desc'		=> __( "Parent Categories with display type 'Both' (parent with child Cats) by default show the Product Count and View All Products link under the Parent category products.", 'woocommerce-product-sort-and-display' ),
+                'id'		=> 'psad_count_meta_view_all_parent_products_box',
+                'is_box'	=> true,
+           	),
+           	array(
+				'name' 		=> __( 'Horizontal Alignment', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_count_meta_view_all_parent_products_align',
+				'css' 		=> 'width:120px;',
+				'type' 		=> 'select',
+				'default'	=> 'center',
+				'options'	=> array(
+						'center'		=> __( 'Center', 'woocommerce-product-sort-and-display' ) ,
+						'left'			=> __( 'Left', 'woocommerce-product-sort-and-display' ) ,
+						'right'			=> __( 'Right', 'woocommerce-product-sort-and-display' ) ,
+					),
+			),
+
+			array(
+            	'name' 		=> __( 'Tag Page Count Dynamic Text', 'woocommerce-product-sort-and-display' ),
+                'type' 		=> 'heading',
+                'class'		=> 'pro_feature_fields',
+                'id'		=> 'psad_tags_count_meta_box',
+                'is_box'	=> true,
+           	),
+			array(  
+				'name' 		=> __( 'Count Meta Text', 'woocommerce-product-sort-and-display' ),
+				'id' 		=> 'psad_tag_count_meta_text',
+				'type' 		=> 'array_textfields',
+				'ids'		=> array( 
+	 								array(  'id' 		=> 'psad_tag_count_meta_text1',
+	 										'name' 		=> __( '%d - %d', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:120px;',
+	 										'default'	=> __( 'Showing', 'woocommerce-product-sort-and-display' ) 
+									),
+									array(  'id' 		=> 'psad_tag_count_meta_text2',
+	 										'name' 		=> __( '%d', 'woocommerce-product-sort-and-display' ),
+	 										'css'		=> 'width:60px;',
+	 										'default'	=> __( 'of', 'woocommerce-product-sort-and-display' ) 
+									),
+									array(  'id' 		=> 'psad_tag_count_meta_text3',
+	 										'name' 		=> '',
+	 										'css'		=> 'width:200px;',
+	 										'default'	=> __( 'products in this Tag', 'woocommerce-product-sort-and-display' ) 
+									),
+	 							)
+			),
+
         ));
 	}
 	
@@ -452,8 +583,10 @@ class WC_PSAD_View_All_Count_Meta_Settings extends WC_PSAD_Admin_UI
 	}
 }
 
-global $wc_psad_view_all_count_meta_settings;
-$wc_psad_view_all_count_meta_settings = new WC_PSAD_View_All_Count_Meta_Settings();
+}
+
+// global code
+namespace {
 
 /**
  * wc_psad_view_all_count_meta_settings_form()
@@ -464,4 +597,4 @@ function wc_psad_view_all_count_meta_settings_form() {
 	$wc_psad_view_all_count_meta_settings->settings_form();
 }
 
-?>
+}

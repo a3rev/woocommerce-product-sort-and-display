@@ -2,9 +2,9 @@
 
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
-Requires at least: 4.5
-Tested up to: 5.3
-Stable tag: 1.9.0
+Requires at least: 4.9
+Tested up to: 5.3.2
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -72,10 +72,10 @@ Want to add a new language? You can contribute via [translate.wordpress.org](htt
 
 = Minimum Requirements =
 
-* WordPress 4.5
-* WooCommerce 2.7 and later.
-* PHP version 5.6.20 or greater
-* MySQL version 5.5 or greater
+* WordPress 4.9
+* WooCommerce 3.0 and later.
+* PHP version 7.0 or greater
+* MySQL version 5.6 or greater
 
 = Automatic installation =
 
@@ -122,6 +122,24 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.0.0 - 2020/02/11 =
+* This major feature release completes the full refactor of the plugins PHP to Composer, adds Product Sort Capability to shop page, full rework of the Sort and Display features on Product Category admin plus compatibility with WooCommerce 3.9.1 and WordPress 5.3.2
+* Feature - Plugin Framework fully refactored to Composer for cleaner code and faster PHP code on the admin panels
+* Feature - Add Shop Page Sort & Display settings to each Category Add/Edit page
+* Feature - Set a unique number of products to show per category on shop page
+* Feature - Set a unique Product Sort type for each category on the shop page
+* Feature - Add Product Sort capability on Shop page with WooCommerce Sort dropdown
+* Feature - Apply Hide product categories and Category Order on Shop page to the Category placeholder cards when display type 'Show categories' or Categories and Products is set.
+* Feature - Add Margin settings above and below for Endless Scroll Button or Linked text
+* Feature - Rework Product > Categories menu. Replace Shop Page text with cart icon, add tooltip and replace Switch UI with checkbox
+* Tweak - Auto clear the Sort & Display Categories cache when the display order of categories on shop page is changed
+* Tweak - Update most of the option boxes help text for greater clarity
+* Tweak - Add in Premium version options boxes with green header (options don't work of course) so that the Premium Parent Cat / Child Cat features can be easily visualized.
+* Tweak - Update plugin for compatibility with new version of plugin Framework
+* Tweak - Test for compatibility with WordPress 5.3.2
+* Tweak - Test for compatibility with WooCommerce 3.9.1
+* Fix - Product Sort for compatibility with WooCommerce 3.9.x
 
 = 1.9.0 - 2019/11/14 =
 * This feature release has a lot including compatibility with WooCommerce 3.8.0, WordPress 5.3.0, PHP upgrade to Composer PHP Dependency Manger and a full security review and update.
@@ -503,6 +521,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+This is a major feature release. Please be sure to backup before you run this! Completes the full refactor of PHP to Composer, adds multiple new Product Sort Capabilities to shop page, full rework of the Sort and Display features on Product Category admin plus compatibility with WooCommerce 3.9.1 and WordPress 5.3.2
 
 = 1.9.0 =
 This feature release has a lot including compatibility with WooCommerce 3.8.0, WordPress 5.3.0, PHP upgrade to Composer PHP Dependency Manger and a full security review and update.

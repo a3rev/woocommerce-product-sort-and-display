@@ -16,12 +16,26 @@ class ComposerStaticInit7db08ee0feafd6165a73b92d3acec00d
     public static $prefixDirsPsr4 = array (
         'A3Rev\\WCPSAD\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/classes',
+            0 => __DIR__ . '/../..' . '/admin',
+            1 => __DIR__ . '/../..' . '/classes',
         ),
     );
 
     public static $classMap = array (
         'A3Rev\\WCPSAD\\Admin_Hook' => __DIR__ . '/../..' . '/classes/class-wc-psad-admin-hook.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Admin_Init' => __DIR__ . '/../..' . '/admin/admin-init.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Admin_Interface' => __DIR__ . '/../..' . '/admin/admin-interface.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Admin_UI' => __DIR__ . '/../..' . '/admin/admin-ui.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Fonts_Face' => __DIR__ . '/../..' . '/admin/includes/fonts_face.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Less_Sass' => __DIR__ . '/../..' . '/admin/less/sass.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Pages\\Sort_Display' => __DIR__ . '/../..' . '/admin/admin-pages/admin-sort-display-page.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Settings\\Endless_Scroll' => __DIR__ . '/../..' . '/admin/settings/endless-scroll-settings.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Settings\\Global_Panel' => __DIR__ . '/../..' . '/admin/settings/global-settings.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Settings\\View_All_Count_Meta' => __DIR__ . '/../..' . '/admin/settings/view-all-count-meta-settings.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Tabs\\Endless_Scroll' => __DIR__ . '/../..' . '/admin/tabs/endless-scroll-tab.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Tabs\\Global_Settings' => __DIR__ . '/../..' . '/admin/tabs/global-settings-tab.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Tabs\\View_All_Count_Meta' => __DIR__ . '/../..' . '/admin/tabs/view-all-count-meta-tab.php',
+        'A3Rev\\WCPSAD\\FrameWork\\Uploader' => __DIR__ . '/../..' . '/admin/includes/uploader/class-uploader.php',
         'A3Rev\\WCPSAD\\Functions' => __DIR__ . '/../..' . '/classes/class-wc-psad-functions.php',
         'A3Rev\\WCPSAD\\Main' => __DIR__ . '/../..' . '/classes/class-wc-psad.php',
     );

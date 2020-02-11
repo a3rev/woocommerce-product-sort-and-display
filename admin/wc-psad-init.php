@@ -8,14 +8,14 @@ function wc_psad_install()
 {
     global $wpdb;
 
-    global $wc_psad_admin_init;
+    global ${WC_PSAD_PREFIX.'admin_init'};
 
     WCPSAD\Functions::auto_create_order_keys_all_products();
     update_option('wc_psad_lite_version', WC_PSAD_VERSION );
-    delete_metadata( 'user', 0, $wc_psad_admin_init->plugin_name . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
+    delete_metadata( 'user', 0, ${WC_PSAD_PREFIX.'admin_init'}->plugin_name . '-' . 'psad_plugin_framework_box' . '-' . 'opened', '', true );
 
     // Remove house keeping option of another version
-    delete_option($wc_psad_admin_init->plugin_name . '_clean_on_deletion');
+    delete_option(${WC_PSAD_PREFIX.'admin_init'}->plugin_name . '_clean_on_deletion');
 
     update_option('wc_psad_just_installed', true);
 }
@@ -26,12 +26,12 @@ function psad_init()
         delete_option('wc_psad_just_installed');
 
         // Set Settings Default from Admin Init
-        global $wc_psad_admin_init;
-        $wc_psad_admin_init->set_default_settings();
+        global ${WC_PSAD_PREFIX.'admin_init'};
+        ${WC_PSAD_PREFIX.'admin_init'}->set_default_settings();
 
         // Build sass
-        global $wc_psad_less;
-        $wc_psad_less->plugin_build_sass();
+        global ${WC_PSAD_PREFIX.'less'};
+        ${WC_PSAD_PREFIX.'less'}->plugin_build_sass();
     }
 
     wc_psad_plugin_textdomain();
@@ -49,11 +49,11 @@ add_action( 'admin_enqueue_scripts', array( $wc_psad_settings_hook, 'a3_wp_admin
 add_filter( 'plugin_row_meta', array( $wc_psad_settings_hook, 'plugin_extra_links' ), 10, 2 );
 
 // Need to call Admin Init to show Admin UI
-global $wc_psad_admin_init;
-$wc_psad_admin_init->init();
+global ${WC_PSAD_PREFIX.'admin_init'};
+${WC_PSAD_PREFIX.'admin_init'}->init();
 
 // Add upgrade notice to Dashboard pages
-add_filter( $wc_psad_admin_init->plugin_name . '_plugin_extension_boxes', array( $wc_psad_settings_hook, 'plugin_extension_box' ) );
+add_filter( ${WC_PSAD_PREFIX.'admin_init'}->plugin_name . '_plugin_extension_boxes', array( $wc_psad_settings_hook, 'plugin_extension_box' ) );
 
 // Add extra link on left of Deactivate link on Plugin manager page
 add_action( 'plugin_action_links_' . WC_PSAD_NAME, array( $wc_psad_settings_hook, 'settings_plugin_links' ) );
@@ -80,8 +80,8 @@ function psad_upgrade_plugin()
         update_option('wc_psad_lite_version', '1.1.0');
 
         // Build sass
-        global $wc_psad_less;
-        $wc_psad_less->plugin_build_sass();
+        global ${WC_PSAD_PREFIX.'less'};
+        ${WC_PSAD_PREFIX.'less'}->plugin_build_sass();
     }
 
     if ( version_compare( get_option( 'wc_psad_lite_version') , '1.3.2' ) === -1 ) {
