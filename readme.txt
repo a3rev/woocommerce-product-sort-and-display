@@ -2,9 +2,9 @@
 
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
-Requires at least: 4.9
-Tested up to: 5.3.2
-Stable tag: 2.0.0
+Requires at least: 5.0
+Tested up to: 5.4
+Stable tag: 2.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -72,7 +72,7 @@ Want to add a new language? You can contribute via [translate.wordpress.org](htt
 
 = Minimum Requirements =
 
-* WordPress 4.9
+* WordPress 5.0
 * WooCommerce 3.0 and later.
 * PHP version 7.0 or greater
 * MySQL version 5.6 or greater
@@ -122,6 +122,17 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.0.1 - 2020/04/01 =
+* This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1, Travis CI build unit test for compliance with WordPress PHP coding standards and PHP tweaks for compatibility with PHP v 7.0 to 7.4
+* Tweak - Test for compatibility with WordPress 5.4
+* Tweak - Test for compatibility with WooCommerce 4.0.1
+* Tweak - Plugin Framework fully refactored to Composer for cleaner code and faster PHP code on admin panels
+* Tweak - Update plugin for compatibility with new version of plugin Framework
+* Fix - Update global ${$this- to $GLOBALS[$this to resolve 7.0+ PHP warnings
+* Fix - Update global ${$option to $GLOBALS[$option to resolve 7.0+ PHP warnings
+* Fix - Update less PHP lib that use square brackets [] instead of curly braces {} for Array, depreciated in PHP 7.4
+* Fix - Validate to not use get_magic_quotes_gpc function that are depreciated in PHP 7.4
 
 = 2.0.0 - 2020/02/11 =
 * This major feature release completes the full refactor of the plugins PHP to Composer, adds Product Sort Capability to shop page, full rework of the Sort and Display features on Product Category admin plus compatibility with WooCommerce 3.9.1 and WordPress 5.3.2
@@ -521,6 +532,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+This maintenance release is for compatibility with WordPress 5.4, WooCommerce 4.0.1, Travis CI build unit test for compliance with WordPress PHP coding standards and PHP tweaks for compatibility with PHP v 7.0 to 7.4
 
 = 2.0.0 =
 This is a major feature release. Please be sure to backup before you run this! Completes the full refactor of PHP to Composer, adds multiple new Product Sort Capabilities to shop page, full rework of the Sort and Display features on Product Category admin plus compatibility with WooCommerce 3.9.1 and WordPress 5.3.2

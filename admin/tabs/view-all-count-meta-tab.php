@@ -116,9 +116,7 @@ class View_All_Count_Meta extends FrameWork\Admin_UI
 	/* tab_manager() */
 	/* Call tab layout from Admin Init 
 	/*-----------------------------------------------------------------------------------*/
-	public function tab_manager() {
-		global ${$this->plugin_prefix.'admin_init'};
-		
+	public function tab_manager() {		
 		$this->plugin_extension_start();
 		wc_psad_view_all_count_meta_settings_form();
 		$this->plugin_extension_end();

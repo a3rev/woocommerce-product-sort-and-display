@@ -419,6 +419,7 @@ class Main
 			for ( $i = $current ; $i < $to ; ++$i ) {
 
 				$category = $product_categories[$i];
+				$list_product_output = '';
 
 				$psad_shop_product_per_page	= get_term_meta( $category->term_id, 'psad_shop_product_per_page', true );
 				if (!$psad_shop_product_per_page || $psad_shop_product_per_page <= 0)

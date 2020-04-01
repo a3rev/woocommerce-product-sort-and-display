@@ -116,9 +116,7 @@ class Endless_Scroll extends FrameWork\Admin_UI
 	/* panels_include */
 	/* Include form settings panels 
 	/*-----------------------------------------------------------------------------------*/
-	public function tab_manager() {
-		global ${$this->plugin_prefix.'admin_init'};
-		
+	public function tab_manager() {		
 		$this->plugin_extension_start();
 		wc_psad_endless_scroll_settings_form();
 		$this->plugin_extension_end();

@@ -2,15 +2,15 @@
 /*
 Plugin Name: Product Sort and Display for WooCommerce
 Description: Take control of your WooCommerce Shop random product display with WooCommerce Show Products by Category. Sort and show products on Shop page by category with 'On Sale' or 'Featured' products showing first. Products showing and total products per category count for intelligent viewing.
-Version: 2.0.0
-Requires at least: 4.9
-Tested up to: 5.3.2
+Version: 2.0.1
+Requires at least: 5.0
+Tested up to: 5.4
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Text Domain: woocommerce-product-sort-and-display
 Domain Path: /languages
 WC requires at least: 3.0.0
-WC tested up to: 3.9.1
+WC tested up to: 4.0.1
 License: This software is under commercial license and copyright to A3 Revolution Software Development team
 
 	WooCommerce Show Products By Categories. Plugin for the WooCommerce shopping Cart.
@@ -38,7 +38,7 @@ if (!defined("WC_PSAD_AUTHOR_URI")) define("WC_PSAD_AUTHOR_URI", "http://a3rev.c
 
 define( 'WC_PSAD_KEY', 'wc_psad' );
 define( 'WC_PSAD_PREFIX', 'wc_psad_' );
-define( 'WC_PSAD_VERSION',  '2.0.0' );
+define( 'WC_PSAD_VERSION',  '2.0.1' );
 define( 'WC_PSAD_G_FONTS', true );
 
 use \A3Rev\WCPSAD\FrameWork;
@@ -49,17 +49,14 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 	/**
 	 * Plugin Framework init
 	 */
-	global ${WC_PSAD_PREFIX.'admin_interface'};
-	${WC_PSAD_PREFIX.'admin_interface'} = new FrameWork\Admin_Interface();
+	$GLOBALS[WC_PSAD_PREFIX.'admin_interface'] = new FrameWork\Admin_Interface();
 
 	global $wc_admin_sort_display_page;
 	$wc_admin_sort_display_page = new FrameWork\Pages\Sort_Display();
 
-	global ${WC_PSAD_PREFIX.'admin_init'};
-	${WC_PSAD_PREFIX.'admin_init'} = new FrameWork\Admin_Init();
+	$GLOBALS[WC_PSAD_PREFIX.'admin_init'] = new FrameWork\Admin_Init();
 
-	global ${WC_PSAD_PREFIX.'less'};
-	${WC_PSAD_PREFIX.'less'} = new FrameWork\Less_Sass();
+	$GLOBALS[WC_PSAD_PREFIX.'less'] = new FrameWork\Less_Sass();
 
 	// End - Plugin Framework init
 

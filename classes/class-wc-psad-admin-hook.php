@@ -66,7 +66,6 @@ class Admin_Hook
 	}
 	
 	public function add_google_fonts() {
-		global ${WC_PSAD_PREFIX.'fonts_face'};
 		$psad_es_shop_bt_font 				= get_option( 'psad_es_shop_bt_font' );
 		$psad_es_shop_link_font 			= get_option( 'psad_es_shop_link_font' );
 		$psad_es_category_item_bt_font 		= get_option( 'psad_es_category_item_bt_font' );
@@ -80,7 +79,7 @@ class Admin_Hook
 						
 		$google_fonts = apply_filters( 'wc_psad_google_fonts', $google_fonts );
 		
-		${WC_PSAD_PREFIX.'fonts_face'}->generate_google_webfonts( $google_fonts );
+		$GLOBALS[WC_PSAD_PREFIX.'fonts_face']->generate_google_webfonts( $google_fonts );
 	}
 	
 	/**
@@ -95,13 +94,12 @@ class Admin_Hook
 			@session_start();
 		}
 
-		global ${WC_PSAD_PREFIX.'admin_interface'};
-		add_action( 'admin_footer', array( ${WC_PSAD_PREFIX.'admin_interface'}, 'admin_script_load' ) );
-		add_action( 'admin_footer', array( ${WC_PSAD_PREFIX.'admin_interface'}, 'admin_css_load' ) );
+		add_action( 'admin_footer', array( $GLOBALS[WC_PSAD_PREFIX.'admin_interface'], 'admin_script_load' ) );
+		add_action( 'admin_footer', array( $GLOBALS[WC_PSAD_PREFIX.'admin_interface'], 'admin_css_load' ) );
 		add_action( 'admin_footer', array( $this, 'include_custom_style' ) );
 		add_action( 'admin_footer', array( $this, 'include_custom_script' ) );
-		add_action( 'admin_print_scripts', array( ${WC_PSAD_PREFIX.'admin_interface'}, 'admin_localize_printed_scripts' ), 5 );
-        add_action( 'admin_print_footer_scripts', array( ${WC_PSAD_PREFIX.'admin_interface'}, 'admin_localize_printed_scripts' ), 5 );
+		add_action( 'admin_print_scripts', array( $GLOBALS[WC_PSAD_PREFIX.'admin_interface'], 'admin_localize_printed_scripts' ), 5 );
+        add_action( 'admin_print_footer_scripts', array( $GLOBALS[WC_PSAD_PREFIX.'admin_interface'], 'admin_localize_printed_scripts' ), 5 );
 	}
 	
 	/**
@@ -160,7 +158,6 @@ class Admin_Hook
 	}
 
 	public function psad_add_category_fields(){
-		global ${WC_PSAD_PREFIX.'admin_interface'};
 		?>
         <div class="a3rev_panel_container">
 
@@ -188,7 +185,7 @@ class Admin_Hook
         </div>
         <?php
         $settings_html = ob_get_clean();
-        ${WC_PSAD_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+        $GLOBALS[WC_PSAD_PREFIX.'admin_interface']->panel_box( $settings_html, array(
         	'name' 		=> __( 'Sort & Display - Shop Page', 'woocommerce-product-sort-and-display' ),
         	'desc'		=> __("The WooCommerce 'Display type' settings above do not apply to Categories shown on the Shop Page with Sort and Display.", 'woocommerce-product-sort-and-display' ),
         	'id'		=> 'psad_shop_page_categories_box',
@@ -201,7 +198,6 @@ class Admin_Hook
 	}
 
 	public function psad_edit_category_fields($term, $taxonomy){
-		global ${WC_PSAD_PREFIX.'admin_interface'};
 
 		$psad_shop_product_per_page                 = get_term_meta( $term->term_id, 'psad_shop_product_per_page', true );
 		$psad_shop_product_show_type                = get_term_meta( $term->term_id, 'psad_shop_product_show_type', true );
@@ -239,7 +235,7 @@ class Admin_Hook
 	    </table>
 	    <?php
         $settings_html = ob_get_clean();
-        ${WC_PSAD_PREFIX.'admin_interface'}->panel_box( $settings_html, array(
+        $GLOBALS[WC_PSAD_PREFIX.'admin_interface']->panel_box( $settings_html, array(
         	'name' 		=> __( 'Sort & Display - Shop Page', 'woocommerce-product-sort-and-display' ),
         	'desc'		=> __("The WooCommerce 'Display type' settings above do not apply to Categories shown on the Shop Page with Sort and Display.", 'woocommerce-product-sort-and-display' ),
         	'id'		=> 'psad_shop_page_categories_box',

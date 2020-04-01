@@ -116,10 +116,8 @@ class Global_Settings extends FrameWork\Admin_UI
 	/* tab_manager() */
 	/* Call tab layout from Admin Init 
 	/*-----------------------------------------------------------------------------------*/
-	public function tab_manager() {
-		//global ${$this->plugin_prefix.'admin_init'};
-		
-		//${$this->plugin_prefix.'admin_init'}->admin_settings_tab( $this->parent_page, $this->tab_data() );
+	public function tab_manager() {		
+		//$GLOBALS[$this->plugin_prefix.'admin_init']->admin_settings_tab( $this->parent_page, $this->tab_data() );
 		$this->plugin_extension_start();
 		wc_psad_global_settings_form();
 		$this->plugin_extension_end();
