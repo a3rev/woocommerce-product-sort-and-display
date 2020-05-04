@@ -196,7 +196,7 @@ class Functions
 	}
 
 	public static function generate_transient_name( $prefix = '' , $transient_string = '' ) {
-		$transient_name = $prefix . '_' . call_user_func( 'b' . 'ase' . '64' . '_' . 'en' . 'c' . 'ode' , $transient_string );
+		$transient_name = $prefix . '-' . str_replace( array( '&', '=' ), array( '-', '_' ), $transient_string );
 		if ( strlen( $transient_name ) > 172 ) {
 			$transient_name = '';
 		}

@@ -104,6 +104,11 @@ function psad_upgrade_plugin()
         WCPSAD\Functions::flush_cached();
     }
 
+    // Upgrade to 2.0.2
+    if ( version_compare(get_option('wc_psad_lite_version'), '2.0.2') === -1 ) {
+        update_option('wc_psad_lite_version', '2.0.2');
+        WCPSAD\Functions::flush_cached();
+    }
+
     update_option('wc_psad_lite_version', WC_PSAD_VERSION );
 }
-?>
