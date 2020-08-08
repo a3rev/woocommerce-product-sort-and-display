@@ -108,7 +108,7 @@ class Functions
 				if ( self::is_wc_38_or_larger() ) {
 					add_filter( 'posts_clauses', array( __CLASS__, 'order_by_onsale_post_clauses' ) );
 				} elseif ( self::is_wc_36_or_larger() ) {
-					$ordering_args = order_by_onsale_post_clauses( $ordering_args );
+					$ordering_args = self::order_by_onsale_post_clauses( $ordering_args );
 				} else {
 					$ordering_args['orderby']  = array( 'meta_value_num' => 'ASC', 'menu_order' => 'ASC', 'date' => 'DESC', 'title' => 'ASC' );
 					$ordering_args['order']    = 'ASC';
