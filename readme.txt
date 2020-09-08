@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 2.0.3
+Tested up to: 5.5.1
+Stable tag: 2.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,12 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.0.4 - 2020/09/08 =
+* This maintenance release adds a fix for a conflict with customers who are using the jQuery Helper plugin and compatibility with latest version of WooCommerce 4.4.1
+* Tweak - Update for compatibility with WooCommerce module from GP Premium addon for GeneratePress theme
+* Tweak - Test for compatibility with WooCommerce 4.4.1
+* Fix - Update plugin framework script, remove jQuery.browser is deprecated to resolve conflict with jQuery Migrate Helper plugin
 
 = 2.0.3 - 2020/08/08 =
 * This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
@@ -543,6 +549,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+* This maintenance release adds a fix for a conflict with customers who are using the jQuery Helper plugin and compatibility with latest version of WooCommerce 4.4.1
 
 = 2.0.3 =
 This maintenance release is for compatibility with WordPress major version 5.5 and WooCommerce 4.3.1.
