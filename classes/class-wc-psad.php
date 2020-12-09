@@ -455,7 +455,7 @@ class Main
 						$wp_query->query_vars['post_status'] = 'publish';
 						$wp_query->query_vars['post_type'] = 'product';
 						if ( version_compare( $woocommerce_version, '2.1', '>' ) )
-							$wp_query->query_vars['meta_query'] = WC()->query->get_meta_query();
+							$wp_query->query_vars['meta_query'] = \WC()->query->get_meta_query();
 						else
 							$wp_query->query_vars['meta_query'] = $woocommerce->query->get_meta_query();
 
@@ -535,7 +535,7 @@ class Main
 							$order                       = ! empty( $orderby_value[1] ) ? $orderby_value[1] : $order;
 						}
 						remove_all_actions( 'woocommerce_get_catalog_ordering_args' );
-						$ordering_args = WC()->query->get_catalog_ordering_args( $psad_shop_product_show_type, $order );
+						$ordering_args = \WC()->query->get_catalog_ordering_args( $psad_shop_product_show_type, $order );
 						$product_args = array_merge( $product_args, $ordering_args );
 					}
 

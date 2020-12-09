@@ -39,7 +39,7 @@ class Functions
 		// Create sort keys
 		if ( $all_products && count( $all_products ) > 0 ) {
 			foreach ( $all_products as $a_product ) {
-				if ( version_compare( WC()->version, '2.2.0', '<' ) ) {
+				if ( version_compare( \WC()->version, '2.2.0', '<' ) ) {
 					$product 	= get_product( $a_product->ID );
 				} else {
 					$product 	= wc_get_product( $a_product->ID );
@@ -71,7 +71,7 @@ class Functions
 		if ( ! current_user_can( 'edit_post', $post_id ) ) return $post_id;
 		if ( $post->post_type != 'product' ) return $post_id;
 		
-		if ( version_compare( WC()->version, '2.2.0', '<' ) ) {
+		if ( version_compare( \WC()->version, '2.2.0', '<' ) ) {
 			$product 	= get_product( $post );
 		} else {
 			$product 	= wc_get_product( $post );
