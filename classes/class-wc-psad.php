@@ -130,7 +130,7 @@ class Main
 		$cur_wp_version = preg_replace('/-.*$/', '', $wp_version);
 		?>
 		<script type="text/javascript">
-			jQuery(window).load(function(){
+			jQuery(window).on( 'load', function(){
 				//pbc infinitescroll
 				var pbc_nextPage;
 				var pbc_currentPage = jQuery('.pbc_pagination span.current').html();

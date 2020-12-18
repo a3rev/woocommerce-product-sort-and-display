@@ -123,6 +123,10 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 == Changelog ==
 
+= 2.0.7 - 2020/12/18 =
+* This maintenance release has fixes for compatibility issues with the latest version of jQuery in WordPress 5.6
+* Fix - Replace .load( handler ) by .on( load, handler ) for compatibility with latest version of jQuery
+
 = 2.0.6 - 2020/12/10 =
 * Tweak - Test for compatibility with WooCommerce 4.8.0
 
@@ -559,6 +563,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.0.7 =
+This maintenance release has fixes for compatibility issues with the latest version of jQuery in WordPress 5.6
 
 = 2.0.6 =
 * This maintenance release is for compatibility with WooCommerce 4.8.0
