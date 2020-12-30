@@ -56,7 +56,7 @@
         debug: false,
         behavior: undefined,
         binder: $(window), // used to cache the selector
-        nextSelector: 'div.navigation a:first',
+        nextSelector: 'div.navigation a',
         navSelector: 'div.navigation',
         contentSelector: null, // rename to pageFragment
         extraScrollPx: 150,
@@ -102,7 +102,7 @@
             }
 
             if (binding === 'unbind') {
-                (this.options.binder).unbind('smartscroll.infscr.' + instance.options.infid);
+                (this.options.binder).off('smartscroll.infscr.' + instance.options.infid);
             } else {
                 (this.options.binder)[binding]('smartscroll.infscr.' + instance.options.infid, function () {
                     instance.scroll();
@@ -127,7 +127,7 @@
             }
 
             // Validate page fragment path
-            var path = $(opts.nextSelector).attr('href');
+            var path = $(opts.nextSelector).first().attr('href');
             if (!path) {
                 this._debug('Navigation selector not found');
                 return false;
@@ -184,7 +184,7 @@
                 }
 
                 if (opts.prefill) {
-                    $window.bind('resize.infinite-scroll', instance._prefill);
+                    $window.on('resize.infinite-scroll', instance._prefill);
                 }
             };
 
@@ -222,9 +222,9 @@
                     instance.scroll();
                 }
 
-                $window.bind('resize.infinite-scroll', function() {
+                $window.on('resize.infinite-scroll', function() {
                     if (needsPrefill()) {
-                        $window.unbind('resize.infinite-scroll');
+                        $window.off('resize.infinite-scroll');
                         instance.scroll();
                     }
                 });
@@ -742,7 +742,7 @@
                         return false;
                     }
 
-                    if (!$.isFunction(instance[options]) || options.charAt(0) === '_') {
+                    if (typeof instance[options] !== "function" || options.charAt(0) === '_') {
                         // return $.error('No such method ' + options + ' for Infinite Scroll');
                         return false;
                     }
@@ -800,10 +800,10 @@
 
     event.special.smartscroll = {
         setup: function () {
-            $(this).bind('scroll', event.special.smartscroll.handler);
+            $(this).on('scroll', event.special.smartscroll.handler);
         },
         teardown: function () {
-            $(this).unbind('scroll', event.special.smartscroll.handler);
+            $(this).off('scroll', event.special.smartscroll.handler);
         },
         handler: function (event, execAsap) {
             // Save the context
@@ -821,7 +821,7 @@
     };
 
     $.fn.smartscroll = function (fn) {
-        return fn ? this.bind('smartscroll', fn) : this.trigger('smartscroll', ['execAsap']);
+        return fn ? this.on('smartscroll', fn) : this.trigger('smartscroll', ['execAsap']);
     };
 
 }));

@@ -188,7 +188,7 @@ class Main
 						<?php } ?>
 					});
 					<?php if($show_click_more){?>
-					jQuery(window).unbind('.infscr');
+					jQuery(window).off('.infscr');
 					<?php } ?>
 					<?php if ( function_exists( 'a3_lazy_load_enable' ) ) { ?>
 					<?php if ( $a3_lazy_load_excludes && ! $a3_lazy_load_excludes->check_excluded() ) { ?>
