@@ -196,7 +196,7 @@ class Main
 						jQuery('.box-content').masonry('reload');
 					}).lazyLoadXT({});
 					<?php } } ?>
-					jQuery('.pbc_content_click_more a').click(function(){
+					jQuery('.pbc_content_click_more a').on('click', function(){
 						jQuery('.pbc_content_click_more').hide();
     					jQuery('.pbc_content').infinitescroll('retrieve');
 					 	return false;
