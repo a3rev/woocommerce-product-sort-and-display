@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 5.0
 Tested up to: 5.8.0
-Stable tag: 2.0.13
+Stable tag: 2.0.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -122,6 +122,10 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.0.14 - 2021/07/29 =
+* This maintenance release fixes an issue with Product Sort by most recent not working.
+* Fixed - Product Sort by most recent. Set DESC for order by most recent
 
 = 2.0.13 - 2021/07/22 =
 * This maintenance release has code tweaks for compatibility with WordPress Major version 5.8, WooCommerce version 5.5.1 and some Security Hardening.
@@ -628,6 +632,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.0.14 =
+This maintenance release fixes an issue with Product Sort by most recent not working.
 
 = 2.0.13 =
 This maintenance release has code tweaks for compatibility with WordPress Major version 5.8, WooCommerce version 5.5.1 and some Security Hardening.
