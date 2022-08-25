@@ -533,7 +533,7 @@ class Main
 							$orderby_value               = explode( '-', $psad_shop_product_show_type );
 							$psad_shop_product_show_type = esc_attr( $orderby_value[0] );
 							$order                       = ! empty( $orderby_value[1] ) ? $orderby_value[1] : $order;
-						} else if ( 'date' === $psad_product_show_type ) {
+						} else if ( 'date' === $psad_shop_product_show_type ) {
 							$order = 'DESC';
 						}
 						remove_all_actions( 'woocommerce_get_catalog_ordering_args' );
