@@ -33,7 +33,7 @@ class Admin_UI
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.6.0';
+	public $framework_version      = '2.6.2';
 	public $plugin_name            = WC_PSAD_KEY;
 	public $plugin_path            = WC_PSAD_NAME;
 	public $google_api_key_option  = '';
