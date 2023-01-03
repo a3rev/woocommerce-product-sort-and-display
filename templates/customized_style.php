@@ -80,11 +80,8 @@ nav.woo-pagination a:link, nav.woo-pagination a:visited, nav.woo-pagination a:ac
 .click_more_button{
 	white-space: nowrap;
 	text-decoration:none !important;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
 	display: inline-block;
 	padding: 4px 14px 4px;
-	color: #fff;
 	text-decoration: none;
 	border:none;
 	position: relative;
