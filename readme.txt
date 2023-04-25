@@ -2,9 +2,9 @@
 
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
-Requires at least: 5.6
+Requires at least: 6.0
 Tested up to: 6.2
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,12 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.4.0 - 2023/04/25 =
+* This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
+* Tweak - Test for compatibility with WordPress 6.2
+* Tweak - Test for compatibility with WooCommerce 7.6.0
+* Tweak - Test and declare plugin compatibility with WooCommerce HPOS Custom Tables.
 
 = 2.3.0 - 2023/01/03 =
 * This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls and has compatibility with WooCommerce 7.2
@@ -685,6 +691,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.4.0 =
+This release has compatibility with WordPress 6.2.0, WooCommerce 7.6.0 plus declared compatibility with WooCommerce HPOS.
 
 = 2.3.0 =
 This feature release removes the fontawesome lib and replaces icons with SVGs plus adds Default Topography option to font controls and has compatibility with WooCommerce 7.2
