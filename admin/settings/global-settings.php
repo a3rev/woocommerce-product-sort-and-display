@@ -144,11 +144,7 @@ class Global_Panel extends FrameWork\Admin_UI
 			delete_option( 'psad_global_category_reset' );
 			$metadata = array('psad_shop_product_per_page', 'psad_shop_product_show_type' );
 			foreach ( $metadata as $meta_key ) {
-				if ( version_compare( WC_VERSION, '2.6.0', '>=' ) ) {
-					delete_metadata( 'term', '', $meta_key, '', true );
-				} else {
-					delete_metadata( 'woocommerce_term', '', $meta_key, '', true );
-				}
+				delete_metadata( 'term', '', $meta_key, '', true );
 			}
 		}
 	}
@@ -227,9 +223,6 @@ class Global_Panel extends FrameWork\Admin_UI
 		$wc_version = get_option( 'woocommerce_version', '1.0' );
 
 		$wc_display_settings_url = admin_url( 'customize.php?autofocus[panel]=woocommerce&autofocus[section]=woocommerce_product_catalog' );
-		if ( version_compare( $wc_version, '3.3.0', '<' ) ) {
-			$wc_display_settings_url = admin_url( 'admin.php?page=wc-settings&tab=products&section=display' );
-		}
 		
   		// Define settings			
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
