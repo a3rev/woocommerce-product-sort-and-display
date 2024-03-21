@@ -135,6 +135,7 @@ class Admin_Hook
 						action: 'psad_update_product_cat_custom_meta',
 						tax_id: tax_id,
 						psad_include_shop_page: psad_shop_page,
+						security: '<?php echo wp_create_nonce( "psad_update_product_cat_custom_meta" ); ?>'
 					};
 					$.post(ajaxurl, data, function(response) {
 						if( response == true || response == 'true'){
@@ -304,6 +305,8 @@ class Admin_Hook
 
 	// Save extra taxonomy fields callback function.
 	public function psad_update_product_cat_custom_meta_ajax() {
+		check_ajax_referer( 'psad_update_product_cat_custom_meta', 'security' );
+		
 		global $wpdb;
 		$wpdb->query( $wpdb->prepare( 'DELETE FROM '. $wpdb->options . ' WHERE option_name LIKE %s', '%a3_shop_cat%' ) );
 
