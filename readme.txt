@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WooCommerce, WooCommerce Shop Page, WooCommerce Products, WooCommerce Product Display, WooCommerce Product sort.
 Requires at least: 6.0
-Tested up to: 6.6
-Stable tag: 2.4.3
+Tested up to: 7.0
+Stable tag: 2.4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,15 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Changelog ==
+
+= 2.4.4 - 2026/03/31 =
+* This maintenance release has bug fixes and compatibility with WordPress 7.0, WooCommerce 10.6
+* Tweak - Tested for compatibility with WordPress 7.0
+* Tweak - Tested for compatibility with WooCommerce 10.6
+* Tweak - Improved plugin initialization sequence for better reliability
+* Fix - Resolved PHP warnings on image size registration when settings are not yet saved
+* Fix - Resolved admin interface loading issue on taxonomy edit pages
+* Framework - Updated LESS compiler for compatibility with PHP 8.2 onwards
 
 = 2.4.3 - 2024/07/13 =
 * This release has various tweaks for compatibility with WordPress 6.6 and WooCommerce 8.9.3.
@@ -708,6 +717,9 @@ On any WordPress install that has the WooCommerce plugin installed and activated
 
 
 == Upgrade Notice ==
+
+= 2.4.4 =
+This maintenance release has bug fixes and compatibility with WordPress 7.0, WooCommerce 10.6
 
 = 2.4.3 =
 This release has various tweaks for compatibility with WordPress 6.6 and WooCommerce 8.9.3

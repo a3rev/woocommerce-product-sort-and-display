@@ -36,7 +36,7 @@ function psad_init()
 global $wc_psad_settings_hook;
 
 // Add language
-add_action('init', 'psad_init');
+add_action( 'after_setup_theme', 'psad_init' );
 
 // Add custom style to dashboard
 add_action( 'admin_enqueue_scripts', array( $wc_psad_settings_hook, 'a3_wp_admin' ) );
